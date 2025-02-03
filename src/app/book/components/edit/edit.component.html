@@ -1,3 +1,262 @@
-<div *ngIf="data$ | async as data" >
-    <h1 style="color: aquamarine; font-size: xx-large; font-weight: bolder;" >{{data.book?.title}}</h1>
+<div class="addBook" *ngIf="data$ | async as data">
+  <div class="text-center" style="padding: 50px 0">
+    <div
+      class="logo"
+      style="
+        color: rgb(0, 255, 72);
+        font-weight: bolder;
+        font-family: 'Courier New', Courier, monospace;
+      "
+    >
+      Edit your book to correct any wrong info...
+    </div>
+
+    <div>
+      <div *ngIf="data.validationErrors">
+        <app-error [errorMessage]="data.validationErrors" />
+      </div>
+    </div>
+
+    <div class="login-form-1">
+      <form form [formGroup]="form" (ngSubmit)="onSubmit()" class="text-left">
+        <div class="login-form-main-message"></div>
+        <div class="main-login-form">
+          <div class="login-group">
+            <div class="form-group">
+              <label for="reg_email" class="sr-only">Title</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="title"
+                placeholder="Book Title..."
+                value="form.title"
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-size: large;
+                "
+              />
+            </div>
+
+            <div *ngIf="form.get('title')?.touched">
+              <div
+                *ngIf="form.get('title')?.errors?.['required']"
+                style="color: red; font-weight: bolder"
+              >
+                Book title is required !
+              </div>
+              <div
+                *ngIf="form.get('title')?.errors?.['minlength']"
+                style="color: red; font-weight: bolder"
+              >
+                Title must be at least
+                {{form.get('title')?.errors?.['minlength']['requiredLength']}}
+                characters long !
+              </div>
+              <div
+                *ngIf="form.get('title')?.errors?.['maxlength']"
+                style="color: red; font-weight: bolder"
+              >
+                Title must be no more than
+                {{form.get('title')?.errors?.['maxlength']['requiredLength']}}
+                characters long !
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="reg_email" class="sr-only">Author</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="author"
+                placeholder="Author..."
+                value="form.author"
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-size: large;
+                "
+              />
+            </div>
+
+            <div *ngIf="form.get('author')?.touched">
+              <div
+                *ngIf="form.get('author')?.errors?.['required']"
+                style="color: red; font-weight: bolder"
+              >
+                Author is required !
+              </div>
+              <div
+                *ngIf="form.get('author')?.errors?.['minlength']"
+                style="color: red; font-weight: bolder"
+              >
+                Author's name must be at least
+                {{form.get('author')?.errors?.['minlength']['requiredLength']}}
+                characters long !
+              </div>
+              <div
+                *ngIf="form.get('author')?.errors?.['maxlength']"
+                style="color: red; font-weight: bolder"
+              >
+                Author's name must be no more than
+                {{form.get('author')?.errors?.['maxlength']['requiredLength']}}
+                characters long !
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="reg_email" class="sr-only">Short Description</label>
+              <textarea
+                type="text"
+                class="form-control"
+                formControlName="shortDescription"
+                placeholder="Short description..."
+                value="form.shortDescription"
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-size: large;
+                "
+              ></textarea>
+            </div>
+
+            <div *ngIf="form.get('shortDescription')?.touched">
+              <div
+                *ngIf="form.get('shortDescription')?.errors?.['required']"
+                style="color: red; font-weight: bolder"
+              >
+                Short description is required !
+              </div>
+              <div
+                *ngIf="form.get('shortDescription')?.errors?.['minlength']"
+                style="color: red; font-weight: bolder"
+              >
+                Short description must be at least
+                {{form.get('shortDescription')?.errors?.['minlength']['requiredLength']}}
+                characters long !
+              </div>
+              <div
+                *ngIf="form.get('shortDescription')?.errors?.['maxlength']"
+                style="color: red; font-weight: bolder"
+              >
+                Short description must be no more than
+                {{form.get('shortDescription')?.errors?.['maxlength']['requiredLength']}}
+                characters long !
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="reg_email" class="sr-only">Full Description</label>
+              <textarea
+                type="text"
+                class="form-control"
+                formControlName="fullDescription"
+                placeholder="Full Description..."
+                value="form.fullDescription"
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-size: large;
+                "
+              ></textarea>
+            </div>
+
+            <div *ngIf="form.get('fullDescription')?.touched">
+              <div
+                *ngIf="form.get('fullDescription')?.errors?.['required']"
+                style="color: red; font-weight: bolder"
+              >
+                Full description is required !
+              </div>
+              <div
+                *ngIf="form.get('fullDescription')?.errors?.['minlength']"
+                style="color: red; font-weight: bolder"
+              >
+                Full description must be at least
+                {{form.get('fullDescription')?.errors?.['minlength']['requiredLength']}}
+                characters long !
+              </div>
+              <div
+                *ngIf="form.get('fullDescription')?.errors?.['maxlength']"
+                style="color: red; font-weight: bolder"
+              >
+                Full description must be no more than
+                {{form.get('fullDescription')?.errors?.['maxlength']['requiredLength']}}
+                characters long !
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="reg_email" class="sr-only">Cover Picture</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="coverPicture"
+                placeholder="Cover Picture..."
+                value="form.coverPicture"
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-size: large;
+                "
+              />
+            </div>
+
+            <div *ngIf="form.get('coverPicture')?.touched">
+              <div
+                *ngIf="form.get('coverPicture')?.errors?.['required']"
+                style="color: red; font-weight: bolder"
+              >
+                Cover picture is required !
+              </div>
+              <div
+                *ngIf="form.get('coverPicture')?.errors?.['coverImageValidator']"
+                style="color: red; font-weight: bolder"
+              >
+                Cover picture URL must start with https:// !
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="reg_email" class="sr-only">My Opinion</label>
+              <textarea
+                type="text"
+                class="form-control"
+                formControlName="myOpinion"
+                placeholder="My opinion..."
+                value="form.myOpinion"
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-size: large;
+                "
+              ></textarea>
+            </div>
+
+            <div *ngIf="form.get('myOpinion')?.touched">
+              <div
+                *ngIf="form.get('myOpinion')?.errors?.['required']"
+                style="color: red; font-weight: bolder"
+              >
+                Your opinion is required !
+              </div>
+              <div
+                *ngIf="form.get('myOpinion')?.errors?.['minlength']"
+                style="color: red; font-weight: bolder"
+              >
+                Your opinion must be at least
+                {{form.get('myOpinion')?.errors?.['minlength']['requiredLength']}}
+                characters long !
+              </div>
+              <div
+                *ngIf="form.get('myOpinion')?.errors?.['maxlength']"
+                style="color: red; font-weight: bolder"
+              >
+                Your opinion must be no more than
+                {{form.get('myOpinion')?.errors?.['maxlength']['requiredLength']}}
+                characters long !
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="login-button">
+            <i class="fa fa-chevron-right"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>

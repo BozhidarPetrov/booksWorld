@@ -1,0 +1,120 @@
+<div class="navbarstyle" *ngIf="data$ | async as data" >
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto d-flex flex-row mt-3 mt-lg-0">
+          <a
+            class="nav-link active"
+            routerLink="/"
+            style="
+              display: block;
+              width: 55px;
+              margin-right: 15px;
+              margin-left: -30px;
+            "
+            ><img
+              src="../../../../assets/nav-bar-book.jpeg.jpg"
+              height="100%"
+              width="100%"
+          /></a>
+
+          <li class="nav-item text-center mx-2 mx-lg-1">
+            <a class="nav-link active" aria-current="page" routerLink="/">
+              <div>
+                <i class="fa fa-home fa-2x"></i>
+              </div>
+              Home
+            </a>
+          </li>
+
+          <li class="nav-item text-center mx-2 mx-lg-1">
+            <a class="nav-link active" aria-current="page" routerLink="/books/all">
+              <div>
+                <i class="fa fa-book fa-2x"></i>
+              </div>
+              Books
+            </a>
+          </li>
+
+          <li class="nav-item text-center mx-2 mx-lg-1" *ngIf="data.isLoggedIn">
+            <a class="nav-link active" aria-current="page" routerLink="/books/addNew">
+              <div>
+                <i class="fa fa-solid fa-plus fa-2x"></i>
+              </div>
+              Add Book
+            </a>
+          </li>
+        
+
+          <li class="nav-item text-center mx-2 mx-lg-1" *ngIf="!data.isLoggedIn">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              routerLink="/user/register"
+            >
+              <div>
+                <i class="fa fa-sign-in fa-2x"></i>
+              </div>
+              Register
+            </a>
+          </li>
+
+          <li class="nav-item text-center mx-2 mx-lg-1" *ngIf="!data.isLoggedIn">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              routerLink="/user/login"
+            >
+              <div>
+                <i class="fa fa-sign-in fa-2x"></i>
+              </div>
+              Login
+            </a>
+          </li>
+
+          <li class="nav-item text-center mx-2 mx-lg-1" style="cursor: pointer;" *ngIf="data.isLoggedIn">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              (click)="logout()"
+            >
+              <div>
+                <i class="fa fa-sign-out fa-2x"></i>
+              </div>
+              Logout
+            </a>
+          </li>
+
+        </ul>
+
+        <!-- Search form -->
+        <form
+          [formGroup]="form"
+          (ngSubmit)="onSubmit()"
+          class="d-flex input-group w-auto ms-lg-3 my-3 my-lg-0"
+        >
+          <input
+            type="search"
+            class="form-control"
+            placeholder="Enter your search word here..."
+            aria-label="Search"
+            style="
+              margin-top: 20px;
+              margin-left: 10px;
+              font-family: 'Courier New', Courier, monospace;
+              font-size: large;
+              font-weight: bolder;
+            "
+            formControlName="searchText"
+          />
+          <button
+            class="btn btn-primary fa fa-search fa-lg"
+            type="button"
+            data-mdb-ripple-color="dark"
+            style="margin-left: 10px; margin-top: 15px; margin-right: -20px"
+          ></button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</div>

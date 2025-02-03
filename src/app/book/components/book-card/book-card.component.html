@@ -1,0 +1,27 @@
+<div class="card">
+  <a routerLink="/books/{{ book._id }}/details">
+    <img
+      class="card-img-top"
+      src="{{ book.coverPicture }}"
+      alt="Card image cap"
+    />
+    <div class="card-body">
+      <h2 class="card-title" style="font-weight: bolder; font-size: larger">
+        {{ book.title }}
+      </h2>
+      <h5 class="card-title" style="font-weight: bolder; font-size: larger">
+        {{ book.author }}
+      </h5>
+      <p class="card-text" style="font-weight: bolder; font-size: larger">
+        {{ book.shortDescription | shortenText}}
+      </p>
+      <p class="card-text" style="font-weight: bolder; font-size: larger">
+        Click for full description...
+      </p>
+      <p class="card-text" style="font-weight: bolder; font-size: larger">
+        Likes: {{ book.likes.length }}
+      </p>
+     
+    </div>
+  </a>
+</div>

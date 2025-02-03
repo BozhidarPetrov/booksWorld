@@ -1,0 +1,64 @@
+<div class="details" *ngIf="data$ | async as data">
+  <div class="container py-3">
+    <div class="card">
+      <div class="row">
+        <div class="col-md-7 px-3">
+          <div class="card-block px-6">
+            <h1 class="card-title">
+              {{ data.book?.title }} - {{ data.book?.author }}
+            </h1>
+            <br />
+            <p class="card-text" style="font-weight: bolder; font-size: larger">
+              {{ data.book?.shortDescription }}
+            </p>
+            <p class="card-text" style="font-weight: bolder; font-size: larger">
+              {{ data.book?.fullDescription }}
+            </p>
+            <br />
+            <br />
+            <p class="card-text" style="font-weight: bolder; font-size: larger">
+              Uploaded by: {{ data.book?.owner?.username }}
+            </p>
+            <p class="card-text" style="font-weight: bolder; font-size: larger">
+              Uploader's opinion: {{ data.book?.myOpinion }}
+            </p>
+            <p class="card-text" style="font-weight: bolder; font-size: larger">
+              Likes: {{ likesCounter }}
+            </p>
+            <br />
+            <div *ngIf="data.isLoggedIn">
+              <div *ngIf="!isOwner">
+                <div *ngIf="!hasLiked">
+                  <a (click)="like()" class="mt-auto btn btn-primary">Like</a>
+                </div>
+                <div *ngIf="hasLiked">
+                  <p
+                    class="card-text"
+                    style="font-weight: bolder; font-size: larger"
+                  >
+                    You have already liked this book!
+                  </p>
+                </div>
+              </div>
+              <div *ngIf="isOwner">
+                <a routerLink="/books/{{ data.book?._id }}/edit" class="mt-auto btn btn-primary">Edit</a>
+                <a
+                  (click)="delete()"
+                  class="mt-auto btn btn-primary"
+                  style="color: aliceblue"
+                  >Delete</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <img src="{{ data.book?.coverPicture }}" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br />
+  <br />
+</div>

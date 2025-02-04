@@ -3,7 +3,6 @@ import {
   Component,
   Inject,
   inject,
-  Input,
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import {
@@ -17,6 +16,8 @@ import {
 import { Store } from '@ngrx/store';
 import { bookAction } from '../../../book/store/actions';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-deletion-conformation',
@@ -27,6 +28,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
     MatDialogClose,
     MatDialogTitle,
     MatDialogContent,
+    CommonModule,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './deletion-conformation.html',
@@ -35,14 +37,21 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class DeletionConformationComponent {
   constructor(
     private store: Store,
-    @Inject(MAT_DIALOG_DATA) public data: { bookId: string }
+    @Inject(MAT_DIALOG_DATA) public data: { bookId: string; page: string },
+    private router: Router
   ) {}
 
   readonly dialogRef = inject(MatDialogRef<DeletionConformationComponent>);
 
-  clickYes(): void {
-    
+  onDelete: boolean = this.data.page === 'delete' ? true : false;
+  onEdit: boolean = this.data.page === 'edit' ? true : false;
+
+  delete(): void {
     this.store.dispatch(bookAction.deleteBook({ bookId: this.data.bookId }));
+  }
+
+  edit() {
+    this.router.navigate(['/books', this.data.bookId, 'edit']);
   }
 
   clickNo(): void {

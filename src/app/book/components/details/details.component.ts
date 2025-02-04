@@ -44,7 +44,7 @@ export class DetailsComponent implements OnInit {
     book: this.store.select(SelectBookData),
   });
 
-  openDialog(
+  openDialogDelete(
     enterAnimationDuration: string,
     exitAnimationDuration: string
   ): void {
@@ -53,6 +53,21 @@ export class DetailsComponent implements OnInit {
       exitAnimationDuration,
       data: {
         bookId: this.bookId,
+        page: 'delete',
+      },
+    });
+  }
+
+  openDialogEdit(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string
+  ): void {
+    this.dialog.open(DeletionConformationComponent, {
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data: {
+        bookId: this.bookId,
+        page: 'edit',
       },
     });
   }

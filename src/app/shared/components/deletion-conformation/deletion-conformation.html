@@ -1,19 +1,44 @@
-<h2 mat-dialog-title style="font-size: larger; font-weight: bolder">
-  Would you like to delete this book?
-</h2>
-<mat-dialog-content style="font-size: larger; font-weight: bolder">
-  It will be permanently removed!
-</mat-dialog-content>
+<div *ngIf="onDelete">
+  <h2 mat-dialog-title style="font-size: larger; font-weight: bolder">
+    Would you like to delete this book?
+  </h2>
+  <mat-dialog-content style="font-size: larger; font-weight: bolder">
+    It will be permanently removed!
+  </mat-dialog-content>
+</div>
+
+<div *ngIf="onEdit">
+  <h2 mat-dialog-title style="font-size: larger; font-weight: bolder">
+    Would you like to edit this book?
+  </h2>
+  <mat-dialog-content style="font-size: larger; font-weight: bolder">
+    It's data will be changed!
+  </mat-dialog-content>
+</div>
+
 <mat-dialog-actions>
   <button
+    *ngIf="onDelete"
     class="mt-auto btn btn-primary"
     style="color: aliceblue"
     mat-dialog-close
     cdkFocusInitial
-    (click)="clickYes()"
+    (click)="delete()"
   >
     Yes
   </button>
+
+  <button
+    *ngIf="onEdit"
+    class="mt-auto btn btn-primary"
+    style="color: aliceblue"
+    mat-dialog-close
+    cdkFocusInitial
+    (click)="edit()"
+  >
+    Yes
+  </button>
+
   <button
     class="mt-auto btn btn-primary"
     style="color: aliceblue"

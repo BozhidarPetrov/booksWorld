@@ -1,8 +1,26 @@
-<h2 mat-dialog-title>Delete file</h2>
-<mat-dialog-content> Would you like to delete this book? </mat-dialog-content>
+<h2 mat-dialog-title style="font-size: larger; font-weight: bolder">
+  Would you like to delete this book?
+</h2>
+<mat-dialog-content style="font-size: larger; font-weight: bolder">
+  It will be permanently removed!
+</mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button mat-dialog-close cdkFocusInitial (click)="clickYes()">
+  <button
+    class="mt-auto btn btn-primary"
+    style="color: aliceblue"
+    mat-dialog-close
+    cdkFocusInitial
+    (click)="clickYes()"
+  >
     Yes
   </button>
-  <button mat-button mat-dialog-close (click)="clickNo()">No</button>
+  <button
+    class="mt-auto btn btn-primary"
+    style="color: aliceblue"
+    mat-dialog-close
+    (click)="clickNo()"
+  >
+    No
+  </button>
+  <!-- <button mat-button mat-dialog-close (click)="clickNo()">No</button> -->
 </mat-dialog-actions>

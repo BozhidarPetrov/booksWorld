@@ -6,11 +6,23 @@ import { selectIsLoggedIn, selectUser } from '../../../auth/store/reducers';
 import { combineLatest } from 'rxjs';
 import { bookAction } from '../../store/actions';
 import { SelectBookData } from '../../store/reducers';
+import { ChangeDetectionStrategy, inject } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import {
+  MatDialog,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogRef,
+  MatDialogTitle,
+} from '@angular/material/dialog';
+import { DeletionConformationComponent } from '../../../shared/components/deletion-conformation/deletion-conformation';
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule, MatButtonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './details.component.html',
   styleUrl: './details.component.css',
 })
@@ -24,11 +36,26 @@ export class DetailsComponent implements OnInit {
   bookId: string | null = '';
   likesCounter: number | undefined = 0;
 
+  readonly dialog = inject(MatDialog);
+
   data$ = combineLatest({
     isLoggedIn: this.store.select(selectIsLoggedIn),
     user: this.store.select(selectUser),
     book: this.store.select(SelectBookData),
   });
+
+  openDialog(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string
+  ): void {
+    this.dialog.open(DeletionConformationComponent, {
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data: {
+        bookId: this.bookId,
+      },
+    });
+  }
 
   like(): void {
     this.store.dispatch(
@@ -41,9 +68,9 @@ export class DetailsComponent implements OnInit {
     }
   }
 
-  delete(): void {
-    this.store.dispatch(bookAction.deleteBook({ bookId: this.bookId }));
-  }
+  // delete(): void {
+  //   this.store.dispatch(bookAction.deleteBook({ bookId: this.bookId }));
+  // }
 
   ngOnInit(): void {
     this.data$.subscribe((data) => (this.userId = data?.user?._id));

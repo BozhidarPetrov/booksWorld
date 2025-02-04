@@ -32,7 +32,7 @@ export class EditComponent implements OnInit {
 
   data$ = combineLatest({
     book: this.store.select(SelectBookData),
-    validationErrors: this.store.select(selectValidationErrors), //edit the selctor with EDIT ERRORS
+    validationErrors: this.store.select(selectValidationErrors),
   });
 
   form = this.fb.nonNullable.group({
@@ -87,9 +87,11 @@ export class EditComponent implements OnInit {
   onSubmit(): void {
     const request: BookRequestInterface = this.form.getRawValue();
 
-    console.log(request);
-
-    // this.store.dispatch(bookAction.createBook({ request }));
+    if (this.form.valid) {
+      this.store.dispatch(
+        bookAction.editBook({ bookId: this.bookId, request })
+      );
+    }
   }
 
   ngOnInit(): void {
@@ -99,33 +101,20 @@ export class EditComponent implements OnInit {
 
     this.data$.subscribe({
       next: (data) => {
-        if (data.book?.title) {
-          this.form.get('title')?.setValue(data.book.title);
-        }
-
-        if (data.book?.author) {
-          this.form.get('author')?.setValue(data.book.author);
-        }
-
-        if (data.book?.shortDescription) {
-          this.form
-            .get('shortDescription')
-            ?.setValue(data.book.shortDescription);
-        }
-
-        if (data.book?.fullDescription) {
-          this.form.get('fullDescription')?.setValue(data.book.fullDescription);
-        }
-
-        if (data.book?.coverPicture) {
-          this.form.get('coverPicture')?.setValue(data.book.coverPicture);
-        }
-
-        if (data.book?.myOpinion) {
-          this.form.get('myOpinion')?.setValue(data.book.myOpinion);
+        if (data.book) {
+          this.form.setValue({
+            title: data.book.title,
+            author: data.book.author,
+            shortDescription: data.book.shortDescription,
+            fullDescription: data.book.fullDescription,
+            coverPicture: data.book.coverPicture,
+            myOpinion: data.book.myOpinion,
+          });
         }
       },
-      error: (err) => {},
+      error: (err) => {
+        console.log(err);
+      },
     });
   }
 }

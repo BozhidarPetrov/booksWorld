@@ -36,7 +36,8 @@ export const redirectAfterCreateEffect = createEffect(
     return actions$.pipe(
       ofType(bookAction.createBookSuccess),
       tap(({ book }) => {
-        router.navigate(['/books/all']);
+
+        router.navigate(['/books', book._id, 'details']);
       })
     );
   },
@@ -109,7 +110,45 @@ export const redirectAfterDeleteEffect = createEffect(
     return actions$.pipe(
       ofType(bookAction.deleteBookSuccess),
       tap(() => {
-        router.navigate(['/books/all']);      })
+        router.navigate(['/books/all']);
+      })
+    );
+  },
+  { functional: true, dispatch: false }
+);
+
+export const editBookEffect = createEffect(
+  (actions$ = inject(Actions), bookService = inject(BookService)) => {
+    return actions$.pipe(
+      ofType(bookAction.editBook),
+      switchMap(({ bookId, request }) => {
+        return bookService.editBook(bookId, request).pipe(
+          map((book: BookInterface) => {
+            return bookAction.editBookSuccess({ book });
+          }),
+          catchError((error: HttpErrorResponse) => {
+            return of(
+              bookAction.editBookFailure({
+                error: error.error.message,
+              })
+            );
+          })
+        );
+      })
+    );
+  },
+  { functional: true }
+);
+
+export const redirectAfterEditEffect = createEffect(
+  (actions$ = inject(Actions), router = inject(Router)) => {
+    return actions$.pipe(
+      ofType(bookAction.editBookSuccess),
+      tap(({ book }) => {
+        console.log(book);
+        
+        router.navigate(['/books', book._id, 'details']);
+      })
     );
   },
   { functional: true, dispatch: false }

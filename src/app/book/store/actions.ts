@@ -21,5 +21,9 @@ export const bookAction = createActionGroup({
     'Delete book': props<{ bookId: string | null }>(),
     'Delete book success': emptyProps(),
     'Delete book failure': emptyProps(),
+
+    'Edit book': props<{ bookId: string | null  ; request: BookRequestInterface }>(),
+    'Edit book success': props<{ book: BookInterface }>(),
+    'Edit book failure': props<{ error: string }>(),
   },
 });

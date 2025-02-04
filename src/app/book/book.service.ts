@@ -41,4 +41,15 @@ export class BookService {
   deleteBook(bookId: string | null) {
     return this.http.get(`${environment.apiUrl}/books/${bookId}/delete`);
   }
+
+  editBook(
+    bookId: string | null,
+    request: BookRequestInterface
+  ): Observable<BookInterface> {
+    const fullUrl = `${environment.apiUrl}/books/${bookId}/edit`;
+
+    return this.http
+      .put<BookResponseInterface>(fullUrl, request)
+      .pipe(map(this.getBook));
+  }
 }

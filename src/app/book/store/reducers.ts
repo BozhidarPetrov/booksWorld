@@ -51,6 +51,19 @@ const bookFeature = createFeature({
       ...state,
       isLoading: false,
     })),
+    on(bookAction.editBook, (state) => ({
+      ...state,
+      isSubmitting: true,
+    })),
+    on(bookAction.editBookSuccess, (state, action) => ({
+      ...state,
+      isSubmitting: false,
+    })),
+    on(bookAction.editBookFailure, (state, action) => ({
+      ...state,
+      isSubmitting: false,
+      validationErrors: action.error,
+    })),
     on(routerNavigatedAction, () => initialState)
   ),
 });

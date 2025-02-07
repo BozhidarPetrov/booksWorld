@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './core/components/home/home.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { GuestGuard } from './shared/guards/guestGuard';
 
 export const routes: Routes = [
   {
@@ -47,4 +48,6 @@ export const routes: Routes = [
     loadChildren: () =>
       import('../app/book/book.routes').then((m) => m.bookEditRoutes),
   },
+
+  { path: '**', pathMatch: 'full', redirectTo: '/404' },
 ];

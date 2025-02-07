@@ -3,11 +3,13 @@ import { CreateComponent } from './components/create/create.component';
 import { AllBooksComponent } from './components/all-books/all-books.component';
 import { DetailsComponent } from './components/details/details.component';
 import { EditComponent } from './components/edit/edit.component';
+import { GuestGuard } from '../shared/guards/guestGuard';
 
 export const createBookRoutes: Route[] = [
   {
     path: '',
     component: CreateComponent,
+    canActivate: [GuestGuard]
   },
 ];
 
@@ -29,5 +31,6 @@ export const bookEditRoutes: Route[] = [
   {
     path: '',
     component: EditComponent,
+    canActivate: [GuestGuard]
   },
 ];

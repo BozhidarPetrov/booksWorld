@@ -16,8 +16,7 @@ import {
   MatDialogRef,
   MatDialogTitle,
 } from '@angular/material/dialog';
-import { DeletionConformationComponent } from '../../../shared/components/deletion-conformation/deletion-conformation';
-
+import { ConformationDialogComponent } from '../../../shared/components/conformation-dialog/conformation-dialog';
 @Component({
   selector: 'app-details',
   standalone: true,
@@ -48,7 +47,7 @@ export class DetailsComponent implements OnInit {
     enterAnimationDuration: string,
     exitAnimationDuration: string
   ): void {
-    this.dialog.open(DeletionConformationComponent, {
+    this.dialog.open(ConformationDialogComponent, {
       enterAnimationDuration,
       exitAnimationDuration,
       data: {
@@ -62,7 +61,7 @@ export class DetailsComponent implements OnInit {
     enterAnimationDuration: string,
     exitAnimationDuration: string
   ): void {
-    this.dialog.open(DeletionConformationComponent, {
+    this.dialog.open(ConformationDialogComponent, {
       enterAnimationDuration,
       exitAnimationDuration,
       data: {
@@ -82,10 +81,6 @@ export class DetailsComponent implements OnInit {
       this.likesCounter++;
     }
   }
-
-  // delete(): void {
-  //   this.store.dispatch(bookAction.deleteBook({ bookId: this.bookId }));
-  // }
 
   ngOnInit(): void {
     this.data$.subscribe((data) => (this.userId = data?.user?._id));

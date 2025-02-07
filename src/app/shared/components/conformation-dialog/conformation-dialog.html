@@ -16,6 +16,15 @@
   </mat-dialog-content>
 </div>
 
+<div *ngIf="onLogout">
+  <h2 mat-dialog-title style="font-size: larger; font-weight: bolder">
+    Would you like to log out?
+  </h2>
+  <mat-dialog-content style="font-size: larger; font-weight: bolder">
+    Current session will be closed.
+  </mat-dialog-content>
+</div>
+
 <mat-dialog-actions>
   <button
     *ngIf="onDelete"
@@ -38,6 +47,17 @@
   >
     Yes
   </button>
+
+  <button
+  *ngIf="onLogout"
+  class="mt-auto btn btn-primary"
+  style="color: aliceblue"
+  mat-dialog-close
+  cdkFocusInitial
+  (click)="logout()"
+>
+  Yes
+</button>
 
   <button
     class="mt-auto btn btn-primary"

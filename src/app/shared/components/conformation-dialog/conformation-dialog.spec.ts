@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeletionConformationComponent } from './deletion-conformation';
+import { ConformationDialogComponent } from './conformation-dialog';
 
 describe('DeletionConformationComponent', () => {
-  let component: DeletionConformationComponent;
-  let fixture: ComponentFixture<DeletionConformationComponent>;
+  let component: ConformationDialogComponent;
+  let fixture: ComponentFixture<ConformationDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DeletionConformationComponent]
+      imports: [ConformationDialogComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DeletionConformationComponent);
+    fixture = TestBed.createComponent(ConformationDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

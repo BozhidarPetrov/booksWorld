@@ -1,16 +1,24 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { selectIsLoggedIn } from '../../auth/store/reducers';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserGuard implements CanActivate {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private store: Store) {}
+
+  isLoggedIn$ = this.store.select(selectIsLoggedIn);
 
   canActivate(): boolean {
-    const id = localStorage.getItem('id');
+    let loggedUser: boolean | undefined;
 
-    if (id === null) {
+    this.isLoggedIn$.subscribe((data) => {
+      loggedUser = data;
+    });
+
+    if (!loggedUser) {
       return true;
     } else {
       this.router.navigate(['/404']);

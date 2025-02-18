@@ -85,6 +85,27 @@ export const likeBookEffect = createEffect(
   { functional: true }
 );
 
+export const dislikeBookEffect = createEffect(
+  (actions$ = inject(Actions), bookService = inject(BookService)) => {
+    return actions$.pipe(
+      ofType(bookAction.dislikeBook),
+      switchMap(({ bookId, userId }) => {
+        return bookService.dislikeBook(bookId, userId).pipe(
+          map(() => {
+            return bookAction.dislikeBookSuccess();
+          }),
+          catchError((err) => {
+            console.log(err);
+
+            return of(bookAction.dislikeBookFailure());
+          })
+        );
+      })
+    );
+  },
+  { functional: true }
+);
+
 export const deleteBookEffect = createEffect(
   (actions$ = inject(Actions), bookService = inject(BookService)) => {
     return actions$.pipe(

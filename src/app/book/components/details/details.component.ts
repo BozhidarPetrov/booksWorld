@@ -82,6 +82,18 @@ export class DetailsComponent implements OnInit {
     }
   }
 
+  dislike(): void {
+    this.store.dispatch(
+      bookAction.dislikeBook({ bookId: this.bookId, userId: this.userId })
+    );
+    this.hasLiked = false;
+
+    if (this.likesCounter !== undefined) {
+      this.likesCounter--;
+    }
+    
+  }
+
   ngOnInit(): void {
     this.data$.subscribe((data) => (this.userId = data?.user?._id));
 

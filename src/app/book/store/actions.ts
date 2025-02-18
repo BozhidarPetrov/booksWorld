@@ -18,6 +18,10 @@ export const bookAction = createActionGroup({
     'Like book success': emptyProps(),
     'Like book failure': emptyProps(),
 
+    'Dislike book': props<{ bookId: string | null; userId: String | undefined }>(),
+    'Dislike book success': emptyProps(),
+    'Dislike book failure': emptyProps(),
+
     'Delete book': props<{ bookId: string | null }>(),
     'Delete book success': emptyProps(),
     'Delete book failure': emptyProps(),

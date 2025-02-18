@@ -5,4 +5,5 @@ export interface MongooseUserInterface {
     _id: String
     __v: Number;
     token: string;
+    favoriteBooks: string[];
 }

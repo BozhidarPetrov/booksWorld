@@ -32,6 +32,13 @@ export class BookService {
     });
   }
 
+  dislikeBook(bookId: string | null, userId: String | undefined) {
+    return this.http.post(`${environment.apiUrl}/books/${bookId}/dislike`, {
+      bookId,
+      userId,
+    });
+  }
+
   getSingleBook(bookId: string | null): Observable<BookFromMongoose> {
     return this.http.get<BookFromMongoose>(
       `${environment.apiUrl}/books/${bookId}/details`

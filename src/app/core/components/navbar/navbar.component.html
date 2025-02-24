@@ -44,6 +44,15 @@
               Add Book
             </a>
           </li>
+
+          <li class="nav-item text-center mx-2 mx-lg-1" *ngIf="data.isLoggedIn">
+            <a class="nav-link active" aria-current="page" routerLink="/user/profile">
+              <div>
+                <i class="fa fa-solid fa-user fa-2x"></i>
+              </div>
+              Profile
+            </a>
+          </li>
         
 
           <li class="nav-item text-center mx-2 mx-lg-1" *ngIf="!data.isLoggedIn">

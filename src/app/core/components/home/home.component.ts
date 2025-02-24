@@ -43,7 +43,6 @@ export class HomeComponent implements OnInit {
           this.allBooks = books;
           let random = Math.floor(Math.random() * this.allBooks.length);
           this.randomBook = this.allBooks[random];
-          console.log(this.randomBook);
         },
       });
   }

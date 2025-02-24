@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './core/components/home/home.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
-import { GuestGuard } from './shared/guards/guestGuard';
 
 export const routes: Routes = [
   {
@@ -53,6 +52,12 @@ export const routes: Routes = [
     path: 'books/:bookId/comment',
     loadChildren: () =>
       import('../app/book/book.routes').then((m) => m.bookCommentRoutes),
+  },
+
+  {
+    path: 'user/profile',
+    loadChildren: () =>
+      import('../app/userProfile/profile.routes').then((m) => m.profileRoutes),
   },
 
   { path: '**', pathMatch: 'full', redirectTo: '/404' },

@@ -38,7 +38,7 @@
               >
               <div *ngIf="!isOwner">
                 <div *ngIf="!hasLiked">
-                  <a (click)="like()" class="mt-auto btn btn-primary">Like</a>
+                  <a (click)="like()" class="mt-auto btn btn-primary" style="color: aliceblue">Like</a>
                 </div>
                 <div *ngIf="hasLiked">
                   <p
@@ -48,6 +48,7 @@
                     You have already liked this book!
                   </p>
                   <a (click)="dislike()" class="mt-auto btn btn-primary"
+                  style="color: aliceblue"
                     >Dislike</a
                   >
                 </div>

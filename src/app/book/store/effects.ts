@@ -106,6 +106,39 @@ export const dislikeBookEffect = createEffect(
   { functional: true }
 );
 
+export const commentBookEffect = createEffect(
+  (actions$ = inject(Actions), bookService = inject(BookService)) => {
+    return actions$.pipe(
+      ofType(bookAction.commentBook),
+      switchMap(({ bookId, userId, username,  comment }) => {
+        return bookService.commentBook(bookId, userId, username, comment).pipe(
+          map((book: BookInterface) => {
+            return bookAction.commentBookSuccess({ book });
+          }),
+          catchError((error: HttpErrorResponse) => {
+            console.log(error.error.message);
+
+            return of(bookAction.commentBookFailure());
+          })
+        );
+      })
+    );
+  },
+  { functional: true }
+);
+
+export const redirectAfterCommentEffect = createEffect(
+  (actions$ = inject(Actions), router = inject(Router)) => {
+    return actions$.pipe(
+      ofType(bookAction.commentBookSuccess),
+      tap(({ book }) => {
+        router.navigate(['/books', book._id, 'details']);
+      })
+    );
+  },
+  { functional: true, dispatch: false }
+);
+
 export const deleteBookEffect = createEffect(
   (actions$ = inject(Actions), bookService = inject(BookService)) => {
     return actions$.pipe(

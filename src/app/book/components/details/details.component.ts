@@ -17,10 +17,11 @@ import {
   MatDialogTitle,
 } from '@angular/material/dialog';
 import { ConformationDialogComponent } from '../../../shared/components/conformation-dialog/conformation-dialog';
+import { CommentCardComponent } from '../comment-card/comment-card.component';
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [RouterLink, CommonModule, MatButtonModule],
+  imports: [RouterLink, CommonModule, MatButtonModule, CommentCardComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './details.component.html',
   styleUrl: './details.component.css',
@@ -91,11 +92,9 @@ export class DetailsComponent implements OnInit {
     if (this.likesCounter !== undefined) {
       this.likesCounter--;
     }
-    
   }
 
   ngOnInit(): void {
-    this.data$.subscribe((data) => (this.userId = data?.user?._id));
 
     this.bookId = this.activatedRoute.snapshot.paramMap.get('bookId');
 
@@ -103,6 +102,8 @@ export class DetailsComponent implements OnInit {
 
     this.data$.subscribe({
       next: (data) => {
+        this.userId = data?.user?._id;
+
         this.likesCounter = data.book?.likes.length;
         if (this.userId) {
           const likesArr: string[] | undefined = data?.book?.likes;

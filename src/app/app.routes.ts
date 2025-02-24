@@ -49,5 +49,11 @@ export const routes: Routes = [
       import('../app/book/book.routes').then((m) => m.bookEditRoutes),
   },
 
+  {
+    path: 'books/:bookId/comment',
+    loadChildren: () =>
+      import('../app/book/book.routes').then((m) => m.bookCommentRoutes),
+  },
+
   { path: '**', pathMatch: 'full', redirectTo: '/404' },
 ];

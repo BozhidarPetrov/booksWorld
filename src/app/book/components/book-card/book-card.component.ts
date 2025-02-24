@@ -22,6 +22,7 @@ export class BookCardComponent {
       username: '',
       _id: '',
     },
+    comments: [],
     shortDescription: '',
     title: '',
     __v: 0,

@@ -1,3 +1,4 @@
+import { CommentInterface } from '../../types/commentInterface';
 import { BookOwner } from './bookOwner';
 
 export interface BookFromMongoose {
@@ -10,6 +11,7 @@ export interface BookFromMongoose {
   owner: BookOwner;
   shortDescription: string;
   title: string;
+  comments: CommentInterface[];
   __v: number;
   _id: string;
 }

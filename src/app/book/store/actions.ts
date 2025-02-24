@@ -2,6 +2,7 @@ import { createActionGroup, emptyProps, props } from '@ngrx/store';
 import { BookRequestInterface } from '../types/addBookRequest';
 import { BookInterface } from '../types/book';
 import { BookFromMongoose } from '../components/types/bookFromMongoose';
+import { CommentRequest } from '../types/commentRequest';
 
 export const bookAction = createActionGroup({
   source: 'Book',
@@ -29,5 +30,9 @@ export const bookAction = createActionGroup({
     'Edit book': props<{ bookId: string | null  ; request: BookRequestInterface }>(),
     'Edit book success': props<{ book: BookInterface }>(),
     'Edit book failure': props<{ error: string }>(),
+
+    'Comment book': props<{ bookId: string | null  ; userId: String | undefined, username: String | undefined,  comment: CommentRequest  }>(),
+    'Comment book success': props<{ book: BookInterface }>(),
+    'Comment book failure': emptyProps(),
   },
 });

@@ -9,9 +9,9 @@ import {
   selectValidationErrors,
 } from '../../../auth/store/reducers';
 import { combineLatest } from 'rxjs';
-import { BookFromMongoose } from '../../../book/components/types/bookFromMongoose';
 import { HttpClient } from '@angular/common/http';
 import { BookCardComponent } from '../../../book/components/book-card/book-card.component';
+import { BookFromMongoose } from '../../../book/types/bookFromMongoose';
 
 @Component({
   selector: 'app-home',

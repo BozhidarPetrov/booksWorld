@@ -17,7 +17,7 @@ import {
   MatDialogTitle,
 } from '@angular/material/dialog';
 import { ConformationDialogComponent } from '../../../shared/components/conformation-dialog/conformation-dialog';
-import { CommentCardComponent } from '../comment-card/comment-card.component';
+import { CommentCardComponent } from '../../../comment/components/comment-card/comment-card.component';
 @Component({
   selector: 'app-details',
   standalone: true,

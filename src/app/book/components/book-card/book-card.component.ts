@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { BookFromMongoose } from '../types/bookFromMongoose';
 import { RouterLink } from '@angular/router';
 import { ShortenTextPipe } from '../../../shared/pipes/shorten.pipe';
+import { BookFromMongoose } from '../../types/bookFromMongoose';
 
 @Component({
   selector: 'app-book-card',

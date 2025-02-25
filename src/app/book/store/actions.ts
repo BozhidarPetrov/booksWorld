@@ -1,8 +1,8 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
 import { BookRequestInterface } from '../types/addBookRequest';
 import { BookInterface } from '../types/book';
-import { BookFromMongoose } from '../components/types/bookFromMongoose';
-import { CommentRequest } from '../types/commentRequest';
+import { CommentRequest } from '../../comment/types/commentRequest';
+import { BookFromMongoose } from '../types/bookFromMongoose';
 
 export const bookAction = createActionGroup({
   source: 'Book',
@@ -19,7 +19,10 @@ export const bookAction = createActionGroup({
     'Like book success': emptyProps(),
     'Like book failure': emptyProps(),
 
-    'Dislike book': props<{ bookId: string | null; userId: String | undefined }>(),
+    'Dislike book': props<{
+      bookId: string | null;
+      userId: String | undefined;
+    }>(),
     'Dislike book success': emptyProps(),
     'Dislike book failure': emptyProps(),
 
@@ -27,12 +30,11 @@ export const bookAction = createActionGroup({
     'Delete book success': emptyProps(),
     'Delete book failure': emptyProps(),
 
-    'Edit book': props<{ bookId: string | null  ; request: BookRequestInterface }>(),
+    'Edit book': props<{
+      bookId: string | null;
+      request: BookRequestInterface;
+    }>(),
     'Edit book success': props<{ book: BookInterface }>(),
     'Edit book failure': props<{ error: string }>(),
-
-    'Comment book': props<{ bookId: string | null  ; userId: String | undefined, username: String | undefined,  comment: CommentRequest  }>(),
-    'Comment book success': props<{ book: BookInterface }>(),
-    'Comment book failure': emptyProps(),
   },
 });

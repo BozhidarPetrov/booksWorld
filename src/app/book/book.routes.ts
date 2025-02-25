@@ -4,7 +4,7 @@ import { AllBooksComponent } from './components/all-books/all-books.component';
 import { DetailsComponent } from './components/details/details.component';
 import { EditComponent } from './components/edit/edit.component';
 import { GuestGuard } from '../shared/guards/guestGuard';
-import { CommentComponent } from './components/comment/comment.component';
+import { CommentComponent } from '../comment/components/comment/comment.component';
 
 export const createBookRoutes: Route[] = [
   {

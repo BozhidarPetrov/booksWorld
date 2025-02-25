@@ -1,4 +1,4 @@
-import { BookFromMongoose } from "../components/types/bookFromMongoose";
+import { BookFromMongoose } from "./bookFromMongoose";
 
 export interface BookStateInterface {
   isSubmitting: boolean;

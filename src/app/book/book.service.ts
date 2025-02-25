@@ -5,8 +5,8 @@ import { environment } from '../../environments/environment';
 import { map, Observable } from 'rxjs';
 import { BookInterface } from './types/book';
 import { BookResponseInterface } from './types/addBookResponse';
-import { BookFromMongoose } from './components/types/bookFromMongoose';
-import { CommentRequest } from './types/commentRequest';
+import { CommentRequest } from '../comment/types/commentRequest';
+import { BookFromMongoose } from './types/bookFromMongoose';
 
 @Injectable({
   providedIn: 'root',
@@ -58,42 +58,6 @@ export class BookService {
 
     return this.http
       .put<BookResponseInterface>(fullUrl, request)
-      .pipe(map(this.getBook));
-  }
-
-  // commentBook(
-  //   bookId: string | null,
-  //   userId: String | undefined,
-  //   comment: CommentRequest
-  // ): Observable<BookInterface> {
-  //   return this.http
-  //     .put<BookResponseInterface>(
-  //       `${environment.apiUrl}/books/${bookId}/comment`,
-  //       {
-  //         bookId,
-  //         userId,
-  //         comment,
-  //       }
-  //     )
-  //     .pipe(map(this.getBook));
-  // }
-
-  commentBook(
-    bookId: string | null,
-    userId: String | undefined,
-    username: String | undefined,
-    comment: CommentRequest
-  ): Observable<BookInterface> {
-    return this.http
-      .put<BookResponseInterface>(
-        `${environment.apiUrl}/comments/new`,
-        {
-          bookId,
-          userId,
-          username,
-          comment,
-        }
-      )
       .pipe(map(this.getBook));
   }
 }

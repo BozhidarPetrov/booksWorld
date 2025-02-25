@@ -3,9 +3,9 @@ import { Store } from '@ngrx/store';
 import { combineLatest } from 'rxjs';
 import { selectUser } from '../../../auth/store/reducers';
 import { CommonModule } from '@angular/common';
-import { BookFromMongoose } from '../../../book/components/types/bookFromMongoose';
 import { HttpClient } from '@angular/common/http';
 import { BookCardSmallComponent } from '../../../book/components/book-card-small/book-card-small.component';
+import { BookFromMongoose } from '../../../book/types/bookFromMongoose';
 
 @Component({
   selector: 'app-profile',

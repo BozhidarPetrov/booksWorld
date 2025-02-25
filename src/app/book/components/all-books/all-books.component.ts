@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { BookFromMongoose } from '../types/bookFromMongoose';
 import { BookCardComponent } from '../book-card/book-card.component';
+import { BookFromMongoose } from '../../types/bookFromMongoose';
 
 @Component({
   selector: 'app-all-books',

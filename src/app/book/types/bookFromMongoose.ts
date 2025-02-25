@@ -1,5 +1,5 @@
-import { CommentInterface } from '../../types/commentInterface';
 import { BookOwner } from './bookOwner';
+import { CommentInterface } from '../../comment/types/commentInterface';
 
 export interface BookFromMongoose {
   author: string;

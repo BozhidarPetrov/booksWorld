@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 import { combineLatest } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { CommentRequest } from '../../types/commentRequest';
-import { bookAction } from '../../store/actions';
+import { commentAction } from '../../store/actions';
 
 @Component({
   selector: 'app-comment',
@@ -30,7 +30,6 @@ export class CommentComponent implements OnInit {
   bookId: string | null = '';
   username: String | undefined = '';
 
-
   form = this.fb.nonNullable.group({
     text: [
       '',
@@ -47,12 +46,11 @@ export class CommentComponent implements OnInit {
 
     if (this.form.valid) {
       this.store.dispatch(
-        bookAction.commentBook({
+        commentAction.commentBook({
           bookId: this.bookId,
           userId: this.userId,
           username: this.username,
           comment,
-          
         })
       );
     }
@@ -66,7 +64,7 @@ export class CommentComponent implements OnInit {
     this.data$.subscribe({
       next: (data) => {
         this.userId = data?.user?._id;
-        this.username = data?.user?.username
+        this.username = data?.user?.username;
       },
       error: (err) => {
         console.error(`Error: ${err}`);

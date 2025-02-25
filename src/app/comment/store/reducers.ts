@@ -25,10 +25,33 @@ const commentFeature = createFeature({
       ...state,
       isSubmitting: false,
     })),
+    on(commentAction.getComment, (state) => ({
+      ...state,
+      isLoading: true,
+    })),
+    on(commentAction.getCommentSuccess, (state, action) => ({
+      ...state,
+      isLoading: false,
+      data: action.comment,
+    })),
+    on(commentAction.getCommentFailure, (state) => ({
+      ...state,
+      isLoading: false,
+    })),
+    on(commentAction.editComment, (state) => ({
+      ...state,
+      isSubmitting: true,
+    })),
+    on(commentAction.editCommentSuccess, (state, action) => ({
+      ...state,
+      isSubmitting: false,
+    })),
+    on(commentAction.editCommentFailure, (state, action) => ({
+      ...state,
+      isSubmitting: false,
+      validationErrors: action.error,
+    })),
 
- 
-
-  
     on(routerNavigatedAction, () => initialState)
   ),
 });
@@ -38,4 +61,5 @@ export const {
   reducer: commentReducer,
   selectIsSubmitting,
   selectValidationErrors,
+  selectData: SelectCommentData,
 } = commentFeature;

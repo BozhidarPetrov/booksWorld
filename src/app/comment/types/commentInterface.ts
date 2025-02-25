@@ -1,7 +1,9 @@
 export interface CommentInterface {
     text: string;
-    bookId: string;
-    authorId: string;
+    bookID: string;
+    author: string;
     username: string;
     createdAt: string;
+    _id: string;
+    _v: string;
 }

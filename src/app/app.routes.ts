@@ -60,5 +60,11 @@ export const routes: Routes = [
       import('../app/userProfile/profile.routes').then((m) => m.profileRoutes),
   },
 
+  {
+    path: 'comments/:commentId/edit',
+    loadChildren: () =>
+      import('../app/comment/comment.routes').then((m) => m.editCommentRoutes),
+  },
+
   { path: '**', pathMatch: 'full', redirectTo: '/404' },
 ];

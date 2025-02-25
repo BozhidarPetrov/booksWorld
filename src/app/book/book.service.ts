@@ -5,7 +5,6 @@ import { environment } from '../../environments/environment';
 import { map, Observable } from 'rxjs';
 import { BookInterface } from './types/book';
 import { BookResponseInterface } from './types/addBookResponse';
-import { CommentRequest } from '../comment/types/commentRequest';
 import { BookFromMongoose } from './types/bookFromMongoose';
 
 @Injectable({

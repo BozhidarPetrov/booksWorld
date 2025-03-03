@@ -1,7 +1,6 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
 import { BookRequestInterface } from '../types/addBookRequest';
 import { BookInterface } from '../types/book';
-import { CommentRequest } from '../../comment/types/commentRequest';
 import { BookFromMongoose } from '../types/bookFromMongoose';
 
 export const bookAction = createActionGroup({

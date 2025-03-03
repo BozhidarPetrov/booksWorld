@@ -42,6 +42,20 @@ export class CommentCardComponent implements OnInit {
     });
   }
 
+  openDialogDeleteComment(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string
+  ): void {
+    this.dialog.open(ConformationDialogComponent, {
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data: {
+        commentId: this.comment?._id,
+        page: 'deleteComment',
+      },
+    });
+  }
+
   ngOnInit(): void {
     const dateFromMongoArr = this.comment?.createdAt.split('T');
 

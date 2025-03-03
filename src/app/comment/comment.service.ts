@@ -56,6 +56,11 @@ export class CommentService {
         return response.comment;
       }
 
+      deleteComment(commentId: string | null) {
 
+        //remove comment ID from book comments array
+
+        return this.http.get(`${environment.apiUrl}/comments/${commentId}/delete`);
+      }
 
 }

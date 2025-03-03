@@ -98,3 +98,35 @@ export const redirectAfterEditEffect = createEffect(
   },
   { functional: true, dispatch: false }
 );
+
+export const deleteCommentEffect = createEffect(
+  (actions$ = inject(Actions), commentService = inject(CommentService)) => {
+    return actions$.pipe(
+      ofType(commentAction.deleteComment),
+      switchMap(({ commentId }) => {
+        return commentService.deleteComment(commentId).pipe(
+          map(() => {
+            return commentAction.deleteCommentSuccess();
+          }),
+          catchError(() => {
+            return of(commentAction.deleteCommentFailure());
+          })
+        );
+      })
+    );
+  },
+  { functional: true }
+);
+
+export const redirectAfterDeleteEffect = createEffect(
+  (actions$ = inject(Actions), router = inject(Router)) => {
+    return actions$.pipe(
+      ofType(commentAction.deleteCommentSuccess),
+      tap(() => {
+       location.reload();
+        
+      })
+    );
+  },
+  { functional: true, dispatch: false }
+);

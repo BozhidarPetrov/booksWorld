@@ -16,6 +16,15 @@
   </mat-dialog-content>
 </div>
 
+<div *ngIf="onDeleteComment">
+  <h2 mat-dialog-title style="font-size: larger; font-weight: bolder">
+    Would you like to delete this comment?
+  </h2>
+  <mat-dialog-content style="font-size: larger; font-weight: bolder">
+    It will be permanently removed!
+  </mat-dialog-content>
+</div>
+
 <div *ngIf="onEditComment">
   <h2 mat-dialog-title style="font-size: larger; font-weight: bolder">
     Would you like to edit this comment?
@@ -56,6 +65,17 @@
   >
     Yes
   </button>
+
+  <button
+  *ngIf="onDeleteComment"
+  class="mt-auto btn btn-primary"
+  style="color: aliceblue"
+  mat-dialog-close
+  cdkFocusInitial
+  (click)="deleteComment()"
+>
+  Yes
+</button>
 
   <button
   *ngIf="onEditComment"

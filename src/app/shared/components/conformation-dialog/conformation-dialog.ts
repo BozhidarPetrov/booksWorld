@@ -20,6 +20,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { authActions } from '../../../auth/store/actions';
 import { HttpClient } from '@angular/common/http';
+import { commentAction } from '../../../comment/store/actions';
 
 @Component({
   selector: 'app-conformation-dialog',
@@ -48,6 +49,7 @@ export class ConformationDialogComponent {
 
   onDeleteBook: boolean = this.data.page === 'deleteBook' ? true : false;
   onEditBook: boolean = this.data.page === 'editBook' ? true : false;
+  onDeleteComment: boolean = this.data.page === 'deleteComment' ? true : false;
   onEditComment: boolean = this.data.page === 'editComment' ? true : false;
   onLogout: boolean = this.data.page === 'logout' ? true : false;
 
@@ -57,6 +59,11 @@ export class ConformationDialogComponent {
 
   editBook() {
     this.router.navigate(['/books', this.data.bookId, 'edit']);
+  }
+
+  deleteComment() {
+    this.store.dispatch(commentAction.deleteComment({ commentId: this.data.commentId }));
+
   }
 
   editComment() {

@@ -2,7 +2,6 @@ import { createActionGroup, emptyProps, props } from '@ngrx/store';
 import { BookInterface } from '../../book/types/book';
 import { CommentRequest } from '../types/commentRequest';
 import { CommentInterface } from '../types/commentInterface';
-import { CommentResponseInterface } from '../types/commentResponse';
 
 export const commentAction = createActionGroup({
   source: 'Comment',
@@ -26,5 +25,9 @@ export const commentAction = createActionGroup({
     }>(),
     'Edit comment success': props<{ comment: CommentInterface }>(),
     'Edit comment failure': props<{ error: string }>(),
+
+    'Delete comment': props<{ commentId: string | null }>(),
+    'Delete comment success': emptyProps(),
+    'Delete comment failure': emptyProps(),
   },
 });

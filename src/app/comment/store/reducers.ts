@@ -51,6 +51,18 @@ const commentFeature = createFeature({
       isSubmitting: false,
       validationErrors: action.error,
     })),
+    on(commentAction.deleteComment, (state) => ({
+      ...state,
+      isLoading: true,
+    })),
+    on(commentAction.deleteCommentSuccess, (state, action) => ({
+      ...state,
+      isLoading: false,
+    })),
+    on(commentAction.deleteCommentFailure, (state) => ({
+      ...state,
+      isLoading: false,
+    })),
 
     on(routerNavigatedAction, () => initialState)
   ),

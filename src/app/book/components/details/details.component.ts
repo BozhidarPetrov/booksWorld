@@ -27,7 +27,9 @@ import { CommentCardComponent } from '../../../comment/components/comment-card/c
   styleUrl: './details.component.css',
 })
 export class DetailsComponent implements OnInit {
-  constructor(private activatedRoute: ActivatedRoute, private store: Store) {}
+  constructor(private activatedRoute: ActivatedRoute, private store: Store, ) {}
+
+  
 
   userId: String | undefined = '';
   isLoggedIn: boolean = false;
@@ -94,13 +96,18 @@ export class DetailsComponent implements OnInit {
     }
   }
 
+
+
   ngOnInit(): void {
+
+
     this.bookId = this.activatedRoute.snapshot.paramMap.get('bookId');
 
     this.store.dispatch(bookAction.getBook({ bookId: this.bookId }));
 
     this.data$.subscribe({
       next: (data) => {
+
         this.userId = data?.user?._id;
 
         this.likesCounter = data.book?.likes.length;

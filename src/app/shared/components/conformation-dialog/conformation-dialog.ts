@@ -40,22 +40,27 @@ export class ConformationDialogComponent {
   constructor(
     private store: Store,
     private http: HttpClient,
-    @Inject(MAT_DIALOG_DATA) public data: { bookId: string; page: string },
+    @Inject(MAT_DIALOG_DATA) public data: { bookId: string; page: string, commentId: string },
     private router: Router
   ) {}
 
   readonly dialogRef = inject(MatDialogRef<ConformationDialogComponent>);
 
-  onDelete: boolean = this.data.page === 'delete' ? true : false;
-  onEdit: boolean = this.data.page === 'edit' ? true : false;
+  onDeleteBook: boolean = this.data.page === 'deleteBook' ? true : false;
+  onEditBook: boolean = this.data.page === 'editBook' ? true : false;
+  onEditComment: boolean = this.data.page === 'editComment' ? true : false;
   onLogout: boolean = this.data.page === 'logout' ? true : false;
 
-  delete(): void {
+  deleteBook(): void {
     this.store.dispatch(bookAction.deleteBook({ bookId: this.data.bookId }));
   }
 
-  edit() {
+  editBook() {
     this.router.navigate(['/books', this.data.bookId, 'edit']);
+  }
+
+  editComment() {
+    this.router.navigate(['/comments', this.data.commentId, 'edit']);
   }
 
   logout() {

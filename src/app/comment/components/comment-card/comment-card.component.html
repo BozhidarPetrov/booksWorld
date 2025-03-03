@@ -19,10 +19,15 @@
         style="color: aliceblue"
           >Dislike</a>
 
-        <a class="mt-auto btn btn-primary"
+        <!-- <a class="mt-auto btn btn-primary"
         routerLink="/comments/{{comment?._id}}/edit"
         style="color: aliceblue"
-          >Edit</a>
+          >Edit</a> -->
+
+          <a class="mt-auto btn btn-primary"
+          (click)="openDialogEditComment('300ms', '300ms')"
+          style="color: aliceblue"
+            >Edit</a>
 
           <a class="mt-auto btn btn-primary"
           style="color: aliceblue"

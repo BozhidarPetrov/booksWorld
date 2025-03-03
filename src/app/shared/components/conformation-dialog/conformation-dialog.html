@@ -1,4 +1,4 @@
-<div *ngIf="onDelete">
+<div *ngIf="onDeleteBook">
   <h2 mat-dialog-title style="font-size: larger; font-weight: bolder">
     Would you like to delete this book?
   </h2>
@@ -7,9 +7,18 @@
   </mat-dialog-content>
 </div>
 
-<div *ngIf="onEdit">
+<div *ngIf="onEditBook">
   <h2 mat-dialog-title style="font-size: larger; font-weight: bolder">
     Would you like to edit this book?
+  </h2>
+  <mat-dialog-content style="font-size: larger; font-weight: bolder">
+    It's data will be changed!
+  </mat-dialog-content>
+</div>
+
+<div *ngIf="onEditComment">
+  <h2 mat-dialog-title style="font-size: larger; font-weight: bolder">
+    Would you like to edit this comment?
   </h2>
   <mat-dialog-content style="font-size: larger; font-weight: bolder">
     It's data will be changed!
@@ -27,26 +36,37 @@
 
 <mat-dialog-actions>
   <button
-    *ngIf="onDelete"
+    *ngIf="onDeleteBook"
     class="mt-auto btn btn-primary"
     style="color: aliceblue"
     mat-dialog-close
     cdkFocusInitial
-    (click)="delete()"
+    (click)="deleteBook()"
   >
     Yes
   </button>
 
   <button
-    *ngIf="onEdit"
+    *ngIf="onEditBook"
     class="mt-auto btn btn-primary"
     style="color: aliceblue"
     mat-dialog-close
     cdkFocusInitial
-    (click)="edit()"
+    (click)="editBook()"
   >
     Yes
   </button>
+
+  <button
+  *ngIf="onEditComment"
+  class="mt-auto btn btn-primary"
+  style="color: aliceblue"
+  mat-dialog-close
+  cdkFocusInitial
+  (click)="editComment()"
+>
+  Yes
+</button>
 
   <button
   *ngIf="onLogout"

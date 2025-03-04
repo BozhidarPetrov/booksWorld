@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { bookAction } from '../../store/actions';
 import { combineLatest } from 'rxjs';
 import { SelectBookData, selectValidationErrors } from '../../store/reducers';
@@ -18,7 +18,7 @@ import { selectUser } from '../../../auth/store/reducers';
 @Component({
   selector: 'app-edit',
   standalone: true,
-  imports: [CommonModule, ErrorComponent, ReactiveFormsModule],
+  imports: [CommonModule, ErrorComponent, ReactiveFormsModule, RouterLink],
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.css',
 })

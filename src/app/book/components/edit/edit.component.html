@@ -262,11 +262,14 @@
     </div>
   </div>
 
-  <div class="logo"
-  style="
-    color: rgb(0, 255, 72);
-    font-weight: bolder;
-    font-family: 'Courier New', Courier, monospace;
-    font-size:700%
-  " *ngIf="!isOwner">YOU'RE NOT THE OWNER OF THIS BOOK!</div>
+  <div *ngIf="!isOwner">
+    <div class="alert alert-success" role="alert">
+      <h1 class="alert-heading">You don't have permission to edit this book!</h1>
+      <a routerLink="/" class="mt-auto btn btn-primary"
+      style="color: aliceblue"
+        >Click here to go to the Home page!</a
+      >
+    </div>
+  </div>
+
 </div>

@@ -5,7 +5,6 @@ import { DetailsComponent } from './components/details/details.component';
 import { EditComponent } from './components/edit/edit.component';
 import { GuestGuard } from '../shared/guards/guestGuard';
 import { CommentComponent } from '../comment/components/comment/comment.component';
-import { UserGuard } from '../shared/guards/userGuard';
 
 export const createBookRoutes: Route[] = [
   {

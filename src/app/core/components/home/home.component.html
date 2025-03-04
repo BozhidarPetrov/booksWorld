@@ -6,7 +6,7 @@
     >
       Welcome, {{ data.user?.username }}!
     </p>
-  
+
     <p
       *ngIf="!data.user?.username"
       style="color: aquamarine; font-family: monospace; font-size: 500%"
@@ -14,18 +14,10 @@
       Welcome, GUEST!
     </p>
   </div>
-  </div>
+</div>
 
-  <p
-  
-  style="color: aquamarine; font-family: monospace; font-size: 500%"
->
-  MAKE OWNER GUARDS FOR EDIT BOOK AND EDIT COMMENT!!!
-</p>
-  
-  <div class="home">
-  <div *ngIf="randomBook" >
+<div class="home">
+  <div *ngIf="randomBook">
     <app-book-card [book]="randomBook" />
   </div>
-  
 </div>

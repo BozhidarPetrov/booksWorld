@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { bookAction } from '../../store/actions';
 import { combineLatest } from 'rxjs';
 import { SelectBookData, selectValidationErrors } from '../../store/reducers';
@@ -13,6 +13,7 @@ import {
 } from '@angular/forms';
 import { BookRequestInterface } from '../../types/addBookRequest';
 import { ErrorComponent } from '../../../shared/components/error/error.component';
+import { selectUser } from '../../../auth/store/reducers';
 
 @Component({
   selector: 'app-edit',
@@ -25,12 +26,15 @@ export class EditComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private store: Store,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {}
 
   bookId: string | null = '';
+  isOwner: boolean | undefined;
 
   data$ = combineLatest({
+    user: this.store.select(selectUser),
     book: this.store.select(SelectBookData),
     validationErrors: this.store.select(selectValidationErrors),
   });
@@ -101,7 +105,19 @@ export class EditComponent implements OnInit {
 
     this.data$.subscribe({
       next: (data) => {
+
+      
+      
+
         if (data.book) {
+
+          if(data.user?._id !== data.book?.owner._id){
+            this.isOwner = false;
+          }else{
+            this.isOwner = true;
+          }
+
+
           this.form.setValue({
             title: data.book.title,
             author: data.book.author,

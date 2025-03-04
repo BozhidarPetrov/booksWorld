@@ -87,8 +87,15 @@ export class CommentCardComponent implements OnInit {
     }
   }
 
-  dislike() {
-    console.log('dislike');
+  dislike() : void {
+      this.store.dispatch(
+        commentAction.dislikeComment({ commentId: this.commentId, userId: this.userId })
+      );
+      this.hasLiked = false;
+  
+      if (this.likesCounter !== undefined) {
+        this.likesCounter--;
+      }
   }
 
   ngOnInit(): void {

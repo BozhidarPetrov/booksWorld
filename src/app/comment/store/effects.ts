@@ -151,3 +151,24 @@ export const likeCommentEffect = createEffect(
   },
   { functional: true }
 );
+
+export const dislikeCommentEffect = createEffect(
+  (actions$ = inject(Actions), commentService = inject(CommentService)) => {
+    return actions$.pipe(
+      ofType(commentAction.dislikeComment),
+      switchMap(({ commentId, userId }) => {
+        return commentService.dislikeComment(commentId, userId).pipe(
+          map(() => {
+            return commentAction.dislikeCommentSuccess();
+          }),
+          catchError((err) => {
+            console.log(err);
+
+            return of(commentAction.dislikeCommentFailure());
+          })
+        );
+      })
+    );
+  },
+  { functional: true }
+);

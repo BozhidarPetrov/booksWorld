@@ -4,6 +4,7 @@ export interface CommentResponseInterface {
         author: string;
         username: string;
         createdAt: string;
+        likes: [];
         _id: string;
         _v: string}
     

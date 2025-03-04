@@ -130,3 +130,24 @@ export const redirectAfterDeleteEffect = createEffect(
   },
   { functional: true, dispatch: false }
 );
+
+export const likeCommentEffect = createEffect(
+  (actions$ = inject(Actions), commentService = inject(CommentService)) => {
+    return actions$.pipe(
+      ofType(commentAction.likeComment),
+      switchMap(({ commentId, userId }) => {
+        return commentService.likeComment(commentId, userId).pipe(
+          map(() => {
+            return commentAction.likeCommentSuccess();
+          }),
+          catchError((err) => {
+            console.log(err);
+
+            return of(commentAction.likeCommentFailure());
+          })
+        );
+      })
+    );
+  },
+  { functional: true }
+);

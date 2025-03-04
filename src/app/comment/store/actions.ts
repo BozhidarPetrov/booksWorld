@@ -29,5 +29,9 @@ export const commentAction = createActionGroup({
     'Delete comment': props<{ commentId: string | null }>(),
     'Delete comment success': emptyProps(),
     'Delete comment failure': emptyProps(),
+
+    'Like comment': props<{ commentId: string | undefined; userId: String | undefined }>(),
+    'Like comment success': emptyProps(),
+    'Like comment failure': emptyProps(),
   },
 });

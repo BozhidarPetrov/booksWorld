@@ -10,12 +10,10 @@ import { CommentInterface } from './types/commentInterface';
 import { CommentResponseInterface } from './types/commentResponse';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CommentService {
-
-  constructor(private bookService: BookService, private http:HttpClient) { }
-
+  constructor(private bookService: BookService, private http: HttpClient) {}
 
   commentBook(
     bookId: string | null,
@@ -24,43 +22,44 @@ export class CommentService {
     comment: CommentRequest
   ): Observable<BookInterface> {
     return this.http
-      .put<BookResponseInterface>(
-        `${environment.apiUrl}/comments/new`,
-        {
-          bookId,
-          userId,
-          username,
-          comment,
-        }
-      )
+      .put<BookResponseInterface>(`${environment.apiUrl}/comments/new`, {
+        bookId,
+        userId,
+        username,
+        comment,
+      })
       .pipe(map(this.bookService.getBook));
   }
 
-    getSingleComment(commentId: string | null): Observable<CommentInterface> {
-      return this.http.get<CommentInterface>(
-        `${environment.apiUrl}/comments/${commentId}`
-      );
-    }
+  getSingleComment(commentId: string | null): Observable<CommentInterface> {
+    return this.http.get<CommentInterface>(
+      `${environment.apiUrl}/comments/${commentId}`
+    );
+  }
 
-      editComment(
-        commentId: string | null,
-        comment: CommentRequest
-      ): Observable<CommentInterface> {
-        const fullUrl = `${environment.apiUrl}/comments/${commentId}/edit`;
-    
-        return this.http
-          .put<CommentResponseInterface>(fullUrl, comment).pipe(map(this.getComment));
-      }
+  editComment(
+    commentId: string | null,
+    comment: CommentRequest
+  ): Observable<CommentInterface> {
+    const fullUrl = `${environment.apiUrl}/comments/${commentId}/edit`;
 
-      getComment(response: CommentResponseInterface): CommentInterface {
-        return response.comment;
-      }
+    return this.http
+      .put<CommentResponseInterface>(fullUrl, comment)
+      .pipe(map(this.getComment));
+  }
 
-      deleteComment(commentId: string | null) {
+  getComment(response: CommentResponseInterface): CommentInterface {
+    return response.comment;
+  }
 
-        //remove comment ID from book comments array
+  deleteComment(commentId: string | null) {
+    return this.http.get(`${environment.apiUrl}/comments/${commentId}/delete`);
+  }
 
-        return this.http.get(`${environment.apiUrl}/comments/${commentId}/delete`);
-      }
-
+  likeComment(commentId: string | undefined, userId: String | undefined) {
+    return this.http.post(`${environment.apiUrl}/comments/${commentId}/like`, {
+      commentId,
+      userId,
+    });
+  }
 }

@@ -1,4 +1,4 @@
-import { createActionGroup, emptyProps, props } from '@ngrx/store';
+import { createActionGroup, props } from '@ngrx/store';
 import { RegisterRequestInterface } from '../../auth/types/registerRequest';
 import { MongooseUserInterface } from '../../shared/types/mongooseUser';
 

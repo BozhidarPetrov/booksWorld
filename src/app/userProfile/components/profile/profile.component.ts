@@ -6,11 +6,12 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { BookCardSmallComponent } from '../../../book/components/book-card-small/book-card-small.component';
 import { BookFromMongoose } from '../../../book/types/bookFromMongoose';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, BookCardSmallComponent],
+  imports: [CommonModule, BookCardSmallComponent, RouterLink],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css',
 })

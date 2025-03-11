@@ -61,6 +61,12 @@ export const routes: Routes = [
   },
 
   {
+    path: 'user/profile/edit',
+    loadChildren: () =>
+      import('../app/userProfile/profile.routes').then((m) => m.editProfileRoutes),
+  },
+
+  {
     path: 'comments/:commentId/edit',
     loadChildren: () =>
       import('../app/comment/comment.routes').then((m) => m.editCommentRoutes),

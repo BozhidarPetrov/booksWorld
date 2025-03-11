@@ -1,1 +1,189 @@
-<p>edit-profile works!</p>
+
+
+
+<div class="editProfile">
+    <div class="text-center" style="padding: 50px 0">
+      <div
+        class="logo"
+        style="
+          color: rgb(0, 255, 72);
+          font-weight: bolder;
+          font-family: 'Courier New', Courier, monospace;
+        "
+      >
+        Enter your new profile details here...
+      </div>
+  
+      <div *ngIf="data$ | async as data">
+        <div *ngIf="data.backendErrors">
+          <app-error [errorMessage]="data.backendErrors" />
+        </div>
+      </div>
+  
+      <div class="login-form-1">
+        <form form [formGroup]="form" (ngSubmit)="onSubmit()" class="text-left">
+          <div class="login-form-main-message"></div>
+          <div class="main-login-form">
+            <div class="login-group">
+              <div class="form-group">
+                <label for="reg_email" class="sr-only">Email</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="email"
+                  placeholder="email"
+                  style="
+                    font-family: 'Courier New', Courier, monospace;
+                    font-size: large;
+                  "
+                />
+              </div>
+  
+              <div *ngIf="form.get('email')?.touched">
+                <div
+                  *ngIf="form.get('email')?.errors?.['required']"
+                  style="color: red; font-weight: bolder"
+                >
+                  Email is required !
+                </div>
+                <div
+                  *ngIf="form.get('email')?.errors?.['emailValidator']"
+                  style="color: red; font-weight: bolder"
+                >
+                  Please enter a valid email !
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <label for="reg_username" class="sr-only">Username</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="username"
+                  placeholder="username"
+                  style="
+                    font-family: 'Courier New', Courier, monospace;
+                    font-size: large;
+                  "
+                />
+              </div>
+  
+              <div *ngIf="form.get('username')?.touched">
+                <div
+                  *ngIf="form.get('username')?.errors?.['required']"
+                  style="color: red; font-weight: bolder"
+                >
+                  Username is required !
+                </div>
+  
+                <div
+                  *ngIf="form.get('username')?.errors?.['minlength']"
+                  style="color: red; font-weight: bolder"
+                >
+                  Username must be at least
+                  {{form.get('username')?.errors?.['minlength']['requiredLength']}}
+                  characters long !
+                </div>
+  
+                <div
+                  *ngIf="form.get('username')?.errors?.['maxlength']"
+                  style="color: red; font-weight: bolder"
+                >
+                  Username must be no more than
+                  {{form.get('username')?.errors?.['maxlength']['requiredLength']}}
+                  characters long !
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <label for="reg_password" class="sr-only">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  formControlName="password"
+                  placeholder="Enter new password"
+                  style="
+                    font-family: 'Courier New', Courier, monospace;
+                    font-size: large;
+                  "
+                />
+              </div>
+  
+              <div *ngIf="form.get('password')?.touched">
+                <div
+                  *ngIf="form.get('password')?.errors?.['required']"
+                  style="color: red; font-weight: bolder"
+                >
+                  Password is required !
+                </div>
+  
+                <div
+                  *ngIf="form.get('password')?.errors?.['minlength']"
+                  style="color: red; font-weight: bolder"
+                >
+                  Password must be at least
+                  {{form.get('password')?.errors?.['minlength']['requiredLength']}}
+                  characters long !
+                </div>
+  
+                <div
+                  *ngIf="form.get('password')?.errors?.['maxlength']"
+                  style="color: red; font-weight: bolder"
+                >
+                  Password must be no more than
+                  {{form.get('password')?.errors?.['maxlength']['requiredLength']}}
+                  characters long !
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <label for="reg_password_confirm" class="sr-only"
+                  >Password Confirm</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  formControlName="rePassword"
+                  placeholder="Confirm new password"
+                  style="
+                    font-family: 'Courier New', Courier, monospace;
+                    font-size: large;
+                  "
+                />
+              </div>
+  
+              <div *ngIf="form.get('rePassword')?.touched">
+                <div
+                  *ngIf="form.get('rePassword')?.errors?.['required']"
+                  style="color: red; font-weight: bolder"
+                >
+                  Password conformation is required !
+                </div>
+  
+                <div
+                  *ngIf="
+                    form.get('password')?.value !== form.get('rePassword')?.value
+                  "
+                  style="color: red; font-weight: bolder"
+                >
+                  Passwords must match!
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="login-button">
+              <i class="fa fa-chevron-right"></i>
+            </button>
+          </div>
+          <div
+            class="etc-login-form"
+            style="
+              color: rgb(0, 255, 72);
+              font-weight: bolder;
+              font-family: 'Courier New', Courier, monospace;
+            "
+          >
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

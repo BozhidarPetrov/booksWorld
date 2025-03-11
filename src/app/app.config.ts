@@ -11,6 +11,7 @@ import { provideEffects } from '@ngrx/effects';
 import * as authEffects from '../app/auth/store/effects';
 import * as bookEffects from '../app/book/store/effects';
 import * as commentEffects from '../app/comment/store/effects';
+import * as profileEffects from '../app/userProfile/store/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { AuthService } from './auth/auth-service.service';
 import { authInterceptor } from './shared/services/auth.interceptor';
@@ -29,7 +30,7 @@ export const appConfig: ApplicationConfig = {
     provideState(authFeatureKey, authReducer),
     provideState(bookFeatureKey, bookReducer),
     provideState(commentFeatureKey, commentReducer),
-    provideEffects(authEffects, bookEffects, commentEffects),
+    provideEffects(authEffects, bookEffects, commentEffects, profileEffects),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),

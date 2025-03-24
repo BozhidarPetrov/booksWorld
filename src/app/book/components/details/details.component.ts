@@ -18,6 +18,7 @@ import {
 } from '@angular/material/dialog';
 import { ConformationDialogComponent } from '../../../shared/components/conformation-dialog/conformation-dialog';
 import { CommentCardComponent } from '../../../comment/components/comment-card/comment-card.component';
+import { MongooseUserInterface } from '../../../shared/types/mongooseUser';
 @Component({
   selector: 'app-details',
   standalone: true,
@@ -29,12 +30,14 @@ import { CommentCardComponent } from '../../../comment/components/comment-card/c
 export class DetailsComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private store: Store) {}
 
+  username: String | undefined = '';
   userId: String | undefined = '';
   isLoggedIn: boolean = false;
   hasLiked: boolean = false;
   isOwner: boolean = false;
   bookId: string | null = '';
   likesCounter: number | undefined = 0;
+  likedFrom: String[] = [];
 
   readonly dialog = inject(MatDialog);
 
@@ -78,6 +81,10 @@ export class DetailsComponent implements OnInit {
     );
     this.hasLiked = true;
 
+    if (this.username) {
+      this.likedFrom.push(this.username);
+    }
+
     if (this.likesCounter !== undefined) {
       this.likesCounter++;
     }
@@ -88,6 +95,7 @@ export class DetailsComponent implements OnInit {
       bookAction.dislikeBook({ bookId: this.bookId, userId: this.userId })
     );
     this.hasLiked = false;
+    this.likedFrom.pop();
 
     if (this.likesCounter !== undefined) {
       this.likesCounter--;
@@ -102,13 +110,32 @@ export class DetailsComponent implements OnInit {
     this.data$.subscribe({
       next: (data) => {
         this.userId = data?.user?._id;
+        this.username = data?.user?.username;
+
+        this.likedFrom = [];
+        if (data.book?.likes) {
+          for (let like of data.book?.likes) {
+            let likeTemp: MongooseUserInterface = like;
+            this.likedFrom.push(likeTemp.username);
+          }
+        }
 
         this.likesCounter = data.book?.likes.length;
         if (this.userId) {
-          const likesArr: string[] | undefined = data?.book?.likes;
+          // const likesArr: string[] | undefined = data?.book?.likes;
+          const likesArr: MongooseUserInterface[] | undefined =
+            data?.book?.likes;
 
-          if (likesArr?.includes(this.userId.toString())) {
-            this.hasLiked = true;
+          // if (likesArr?.includes(this.userId.toString())) {
+          //   this.hasLiked = true;
+          // }
+
+          if (likesArr) {
+            for (let user of likesArr) {
+              if (user._id === this.userId.toString()) {
+                this.hasLiked = true;
+              }
+            }
           }
 
           if (data?.book?.owner._id === this.userId) {

@@ -28,6 +28,24 @@
             <p class="card-text" style="font-weight: bolder; font-size: larger">
               Likes: {{ likesCounter }}
             </p>
+
+            <div *ngIf="likedFrom.length !== 0">
+              <p
+                *ngIf="hasLiked"
+                class="card-text"
+                style="font-weight: bolder; font-size: larger"
+              >
+                Liked by: {{ likedFrom }}
+              </p>
+              <p
+                *ngIf="!hasLiked"
+                class="card-text"
+                style="font-weight: bolder; font-size: larger"
+              >
+                Liked by: {{ likedFrom }}
+              </p>
+            </div>
+
             <br />
             <div *ngIf="data.isLoggedIn">
               <a

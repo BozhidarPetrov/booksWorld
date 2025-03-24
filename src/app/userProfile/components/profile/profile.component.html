@@ -17,11 +17,11 @@
                 />
               </div>
               <div class="flex-grow-1 ms-3">
-                <h5 class="mb-1">{{data.user?.username}}</h5>
-                <p class="mb-2 pb-1">{{data.user?.email}}</p>
-               
+                <h5 class="mb-1">{{ data.user?.username }}</h5>
+                <p class="mb-2 pb-1">{{ data.user?.email }}</p>
+
                 <div class="d-flex pt-1">
-                    <button
+                  <button
                     type="button"
                     data-mdb-button-init
                     data-mdb-ripple-init
@@ -40,14 +40,14 @@
                     Liked Books
                   </button>
                   <button
-                  type="button"
-                  data-mdb-button-init
-                  data-mdb-ripple-init
-                  class="btn btn-primary flex-grow-1"
-                  routerLink="/user/profile/edit"
-                >
-                  Edit Profile
-                </button>
+                    type="button"
+                    data-mdb-button-init
+                    data-mdb-ripple-init
+                    class="btn btn-primary flex-grow-1"
+                    routerLink="/user/profile/edit"
+                  >
+                    Edit Profile
+                  </button>
                 </div>
               </div>
             </div>
@@ -57,51 +57,65 @@
     </div>
   </section>
 
-  <div *ngIf="toggleName === 'myBooks'" class="logo"
-  style="
-    color: rgb(0, 255, 72);
-    font-weight: bolder;
-    font-family: 'Courier New', Courier, monospace;
-  ">
-My books:
+  <div
+    *ngIf="toggleName === 'myBooks'"
+    class="logo"
+    style="
+      color: rgb(0, 255, 72);
+      font-weight: bolder;
+      font-family: 'Courier New', Courier, monospace;
+    "
+  >
+    My books:
   </div>
 
-  <div *ngIf="toggleName === 'myBooks'" class="logo"
-  style="
-    color: rgb(0, 255, 72);
-    font-weight: bolder;
-    font-family: 'Courier New', Courier, monospace;
-  ">
-<div *ngIf="filteredBooks.length === 0" >
-  You haven't added any books yet...
-</div>
+  <div
+    *ngIf="toggleName === 'myBooks'"
+    class="logo"
+    style="
+      color: rgb(0, 255, 72);
+      font-weight: bolder;
+      font-family: 'Courier New', Courier, monospace;
+    "
+  >
+    <div *ngIf="filteredBooks.length === 0">
+      You haven't added any books yet...
+    </div>
   </div>
 
-  <div *ngIf="toggleName === 'favoriteBooks'" class="logo"
-  style="
-    color: rgb(0, 255, 72);
-    font-weight: bolder;
-    font-family: 'Courier New', Courier, monospace;
-  ">
-  Liked books:</div>
-
-  <div *ngIf="toggleName === 'favoriteBooks'" class="logo"
-  style="
-    color: rgb(0, 255, 72);
-    font-weight: bolder;
-    font-family: 'Courier New', Courier, monospace;
-  ">
-<div *ngIf="filteredBooks.length === 0" >
-  You haven't liked any books yet...
-</div>
+  <div
+    *ngIf="toggleName === 'favoriteBooks'"
+    class="logo"
+    style="
+      color: rgb(0, 255, 72);
+      font-weight: bolder;
+      font-family: 'Courier New', Courier, monospace;
+    "
+  >
+    Liked books:
   </div>
 
-  <div *ngIf="filteredBooks" >
+  <div
+    *ngIf="toggleName === 'favoriteBooks'"
+    class="logo"
+    style="
+      color: rgb(0, 255, 72);
+      font-weight: bolder;
+      font-family: 'Courier New', Courier, monospace;
+    "
+  >
+    <div *ngIf="filteredBooks.length === 0">
+      You haven't liked any books yet...
+    </div>
+  </div>
+
+  <div *ngIf="filteredBooks">
     <div class="container">
-        <div class="card-columns">
-          <div *ngFor="let book of filteredBooks" class="filteredBooks">
-            <app-book-card-small [book]="book" />
-          </div>
+      <div class="card-columns">
+        <div *ngFor="let book of filteredBooks" class="filteredBooks">
+          <app-book-card-small [book]="book" />
         </div>
       </div>
+    </div>
+  </div>
 </div>

@@ -1,7 +1,3 @@
-
- 
-  .footer {
-
-    transform: translate(0%, 0%);
-
-  }
+.footer {
+  transform: translate(0%, 0%);
+}

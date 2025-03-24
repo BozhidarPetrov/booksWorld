@@ -5,10 +5,8 @@ import { Component, Input } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './logo.component.html',
-  styleUrl: './logo.component.css'
+  styleUrl: './logo.component.css',
 })
 export class LogoComponent {
-
   @Input() title: string = '';
-
 }

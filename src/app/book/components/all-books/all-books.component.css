@@ -1,32 +1,31 @@
 .allBooks {
-    position: absolute;
-    top: 80%;
-    left: 50%;
-    transform: translate(-50%, -85%);
-  } 
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -85%);
+}
 
-  body {
-    background: #232321;
+body {
+  background: #232321;
+}
+h1 {
+  color: #fff;
+  padding: 10px 0;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border: none;
+  &:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
   }
-  h1 {
-    color: #fff;
-    padding: 10px 0;
-  }
-  .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-    border: none;
+  a {
+    color: initial;
     &:hover {
-      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
-    }
-    a {
-      color: initial;
-      &:hover {
-        text-decoration: initial;
-      }
-    }
-    .text-muted i {
-      margin: 0 10px;
+      text-decoration: initial;
     }
   }
-  
+  .text-muted i {
+    margin: 0 10px;
+  }
+}

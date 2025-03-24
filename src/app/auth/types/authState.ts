@@ -1,5 +1,4 @@
-import { MongooseUserInterface } from "../../shared/types/mongooseUser";
-
+import { MongooseUserInterface } from '../../shared/types/mongooseUser';
 
 export interface AuthStateInterface {
   isSubmitting: boolean;

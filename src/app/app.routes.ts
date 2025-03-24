@@ -63,7 +63,9 @@ export const routes: Routes = [
   {
     path: 'user/profile/edit',
     loadChildren: () =>
-      import('../app/userProfile/profile.routes').then((m) => m.editProfileRoutes),
+      import('../app/userProfile/profile.routes').then(
+        (m) => m.editProfileRoutes
+      ),
   },
 
   {

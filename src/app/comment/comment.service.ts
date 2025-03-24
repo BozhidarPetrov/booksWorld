@@ -64,9 +64,12 @@ export class CommentService {
   }
 
   dislikeComment(commentId: string | undefined, userId: String | undefined) {
-    return this.http.post(`${environment.apiUrl}/comments/${commentId}/dislike`, {
-      commentId,
-      userId,
-    });
+    return this.http.post(
+      `${environment.apiUrl}/comments/${commentId}/dislike`,
+      {
+        commentId,
+        userId,
+      }
+    );
   }
 }

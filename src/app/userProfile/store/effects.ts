@@ -10,10 +10,7 @@ import { Store } from '@ngrx/store';
 import { authActions } from '../../auth/store/actions';
 
 export const editProfileEffect = createEffect(
-  (
-    actions$ = inject(Actions),
-    profileService = inject(ProfileService),
-  ) => {
+  (actions$ = inject(Actions), profileService = inject(ProfileService)) => {
     return actions$.pipe(
       ofType(profileActions.editProfile),
       switchMap(({ request }) => {
@@ -23,7 +20,7 @@ export const editProfileEffect = createEffect(
           }),
           catchError((error: HttpErrorResponse) => {
             console.log(error);
-            
+
             return of(
               profileActions.editProfileFailure({
                 error: error.error.message,
@@ -38,7 +35,11 @@ export const editProfileEffect = createEffect(
 );
 
 export const redirectAftereditProfileEffect = createEffect(
-  (actions$ = inject(Actions), router = inject(Router), store = inject(Store)) => {
+  (
+    actions$ = inject(Actions),
+    router = inject(Router),
+    store = inject(Store)
+  ) => {
     return actions$.pipe(
       ofType(profileActions.editProfileSuccess),
       tap(() => {

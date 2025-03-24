@@ -1,3 +1,3 @@
 export interface CommentRequest {
-    text: string;
+  text: string;
 }

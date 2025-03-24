@@ -30,11 +30,17 @@ export const commentAction = createActionGroup({
     'Delete comment success': emptyProps(),
     'Delete comment failure': emptyProps(),
 
-    'Like comment': props<{ commentId: string | undefined; userId: String | undefined }>(),
+    'Like comment': props<{
+      commentId: string | undefined;
+      userId: String | undefined;
+    }>(),
     'Like comment success': emptyProps(),
     'Like comment failure': emptyProps(),
 
-    'Dislike comment': props<{ commentId: string | undefined; userId: String | undefined }>(),
+    'Dislike comment': props<{
+      commentId: string | undefined;
+      userId: String | undefined;
+    }>(),
     'Dislike comment success': emptyProps(),
     'Dislike comment failure': emptyProps(),
   },

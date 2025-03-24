@@ -123,8 +123,7 @@ export const redirectAfterDeleteEffect = createEffect(
     return actions$.pipe(
       ofType(commentAction.deleteCommentSuccess),
       tap(() => {
-       location.reload();
-        
+        location.reload();
       })
     );
   },

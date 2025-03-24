@@ -44,21 +44,21 @@
                 Book title is required !
               </div>
               <div
-              *ngIf="form.get('title')?.errors?.['minlength']"
-              style="color: red; font-weight: bolder"
-            >
-              Title must be at least
-              {{form.get('title')?.errors?.['minlength']['requiredLength']}}
-              characters long !
-            </div>
-            <div
-            *ngIf="form.get('title')?.errors?.['maxlength']"
-            style="color: red; font-weight: bolder"
-          >
-            Title must be no more than
-            {{form.get('title')?.errors?.['maxlength']['requiredLength']}}
-            characters long !
-          </div>
+                *ngIf="form.get('title')?.errors?.['minlength']"
+                style="color: red; font-weight: bolder"
+              >
+                Title must be at least
+                {{form.get('title')?.errors?.['minlength']['requiredLength']}}
+                characters long !
+              </div>
+              <div
+                *ngIf="form.get('title')?.errors?.['maxlength']"
+                style="color: red; font-weight: bolder"
+              >
+                Title must be no more than
+                {{form.get('title')?.errors?.['maxlength']['requiredLength']}}
+                characters long !
+              </div>
             </div>
 
             <div class="form-group">
@@ -83,21 +83,21 @@
                 Author is required !
               </div>
               <div
-              *ngIf="form.get('author')?.errors?.['minlength']"
-              style="color: red; font-weight: bolder"
-            >
-              Author's name must be at least
-              {{form.get('author')?.errors?.['minlength']['requiredLength']}}
-              characters long !
-            </div>
-            <div
-            *ngIf="form.get('author')?.errors?.['maxlength']"
-            style="color: red; font-weight: bolder"
-          >
-            Author's name must be no more than
-            {{form.get('author')?.errors?.['maxlength']['requiredLength']}}
-            characters long !
-          </div>
+                *ngIf="form.get('author')?.errors?.['minlength']"
+                style="color: red; font-weight: bolder"
+              >
+                Author's name must be at least
+                {{form.get('author')?.errors?.['minlength']['requiredLength']}}
+                characters long !
+              </div>
+              <div
+                *ngIf="form.get('author')?.errors?.['maxlength']"
+                style="color: red; font-weight: bolder"
+              >
+                Author's name must be no more than
+                {{form.get('author')?.errors?.['maxlength']['requiredLength']}}
+                characters long !
+              </div>
             </div>
 
             <div class="form-group">
@@ -122,21 +122,21 @@
                 Short description is required !
               </div>
               <div
-              *ngIf="form.get('shortDescription')?.errors?.['minlength']"
-              style="color: red; font-weight: bolder"
-            >
-              Short description must be at least
-              {{form.get('shortDescription')?.errors?.['minlength']['requiredLength']}}
-              characters long !
-            </div>
-            <div
-            *ngIf="form.get('shortDescription')?.errors?.['maxlength']"
-            style="color: red; font-weight: bolder"
-          >
-            Short description must be no more than
-            {{form.get('shortDescription')?.errors?.['maxlength']['requiredLength']}}
-            characters long !
-          </div>
+                *ngIf="form.get('shortDescription')?.errors?.['minlength']"
+                style="color: red; font-weight: bolder"
+              >
+                Short description must be at least
+                {{form.get('shortDescription')?.errors?.['minlength']['requiredLength']}}
+                characters long !
+              </div>
+              <div
+                *ngIf="form.get('shortDescription')?.errors?.['maxlength']"
+                style="color: red; font-weight: bolder"
+              >
+                Short description must be no more than
+                {{form.get('shortDescription')?.errors?.['maxlength']['requiredLength']}}
+                characters long !
+              </div>
             </div>
 
             <div class="form-group">
@@ -161,21 +161,21 @@
                 Full description is required !
               </div>
               <div
-              *ngIf="form.get('fullDescription')?.errors?.['minlength']"
-              style="color: red; font-weight: bolder"
-            >
-              Full description must be at least
-              {{form.get('fullDescription')?.errors?.['minlength']['requiredLength']}}
-              characters long !
-            </div>
-            <div
-            *ngIf="form.get('fullDescription')?.errors?.['maxlength']"
-            style="color: red; font-weight: bolder"
-          >
-            Full description must be no more than
-            {{form.get('fullDescription')?.errors?.['maxlength']['requiredLength']}}
-            characters long !
-          </div>
+                *ngIf="form.get('fullDescription')?.errors?.['minlength']"
+                style="color: red; font-weight: bolder"
+              >
+                Full description must be at least
+                {{form.get('fullDescription')?.errors?.['minlength']['requiredLength']}}
+                characters long !
+              </div>
+              <div
+                *ngIf="form.get('fullDescription')?.errors?.['maxlength']"
+                style="color: red; font-weight: bolder"
+              >
+                Full description must be no more than
+                {{form.get('fullDescription')?.errors?.['maxlength']['requiredLength']}}
+                characters long !
+              </div>
             </div>
 
             <div class="form-group">
@@ -203,8 +203,8 @@
                 *ngIf="form.get('coverPicture')?.errors?.['coverImageValidator']"
                 style="color: red; font-weight: bolder"
               >
-              Cover picture URL must start with http:// or https:// !
-            </div>
+                Cover picture URL must start with http:// or https:// !
+              </div>
             </div>
 
             <div class="form-group">
@@ -229,24 +229,22 @@
                 Your opinion is required !
               </div>
               <div
-              *ngIf="form.get('myOpinion')?.errors?.['minlength']"
-              style="color: red; font-weight: bolder"
-            >
-              Your opinion must be at least
-              {{form.get('myOpinion')?.errors?.['minlength']['requiredLength']}}
-              characters long !
+                *ngIf="form.get('myOpinion')?.errors?.['minlength']"
+                style="color: red; font-weight: bolder"
+              >
+                Your opinion must be at least
+                {{form.get('myOpinion')?.errors?.['minlength']['requiredLength']}}
+                characters long !
+              </div>
+              <div
+                *ngIf="form.get('myOpinion')?.errors?.['maxlength']"
+                style="color: red; font-weight: bolder"
+              >
+                Your opinion must be no more than
+                {{form.get('myOpinion')?.errors?.['maxlength']['requiredLength']}}
+                characters long !
+              </div>
             </div>
-            <div
-            *ngIf="form.get('myOpinion')?.errors?.['maxlength']"
-            style="color: red; font-weight: bolder"
-          >
-            Your opinion must be no more than
-            {{form.get('myOpinion')?.errors?.['maxlength']['requiredLength']}}
-            characters long !
-          </div>
-            </div>
-
-
           </div>
           <button type="submit" class="login-button">
             <i class="fa fa-chevron-right"></i>

@@ -41,7 +41,8 @@ export class ConformationDialogComponent {
   constructor(
     private store: Store,
     private http: HttpClient,
-    @Inject(MAT_DIALOG_DATA) public data: { bookId: string; page: string, commentId: string },
+    @Inject(MAT_DIALOG_DATA)
+    public data: { bookId: string; page: string; commentId: string },
     private router: Router
   ) {}
 
@@ -62,8 +63,9 @@ export class ConformationDialogComponent {
   }
 
   deleteComment() {
-    this.store.dispatch(commentAction.deleteComment({ commentId: this.data.commentId }));
-
+    this.store.dispatch(
+      commentAction.deleteComment({ commentId: this.data.commentId })
+    );
   }
 
   editComment() {

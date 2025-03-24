@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  ReactiveFormsModule,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { combineLatest } from 'rxjs';
@@ -24,10 +29,19 @@ import { ErrorComponent } from '../../../shared/components/error/error.component
 })
 export class RegisterComponent {
   form = this.fb.nonNullable.group({
-    username: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(10)]],
+    username: [
+      '',
+      [Validators.required, Validators.minLength(4), Validators.maxLength(10)],
+    ],
     email: ['', [Validators.required, this.emailValidator('email')]],
-    password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]],
-    rePassword: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]],
+    password: [
+      '',
+      [Validators.required, Validators.minLength(4), Validators.maxLength(8)],
+    ],
+    rePassword: [
+      '',
+      [Validators.required, Validators.minLength(4), Validators.maxLength(8)],
+    ],
   });
 
   emailValidator(email: string): ValidatorFn {
@@ -60,10 +74,7 @@ export class RegisterComponent {
     const password = this.form.get('password')?.value;
     const rePassword = this.form.get('rePassword')?.value;
 
-  
-
     if (this.form.valid && username && email && password && rePassword) {
-
       if (password !== rePassword) {
         return;
       }

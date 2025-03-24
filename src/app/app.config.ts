@@ -39,6 +39,6 @@ export const appConfig: ApplicationConfig = {
       traceLimit: 75,
     }),
     provideRouterStore(),
-    AuthService
+    AuthService,
   ],
 };

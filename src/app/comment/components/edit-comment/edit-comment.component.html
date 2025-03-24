@@ -1,11 +1,10 @@
 <div class="comment">
-    <p style="color: aquamarine; font-family: monospace; font-size: 500%">
-      Edit your book comment here!
-    </p>
-  
-    <section style="background-color: #eee">
-      <form form [formGroup]="form" (ngSubmit)="onSubmit()" class="text-left">
-  
+  <p style="color: aquamarine; font-family: monospace; font-size: 500%">
+    Edit your book comment here!
+  </p>
+
+  <section style="background-color: #eee">
+    <form form [formGroup]="form" (ngSubmit)="onSubmit()" class="text-left">
       <div class="container my-5 py-5">
         <div class="row d-flex justify-content-center">
           <div class="col-md-12 col-lg-10 col-xl-8">
@@ -14,20 +13,15 @@
                 class="card-footer py-3 border-0"
                 style="background-color: #f8f9fa"
               >
-  
                 <div class="d-flex flex-start w-100">
-  
-  
-                  
                   <div data-mdb-input-init class="form-outline w-100">
-                     
                     <textarea
                       class="form-control"
                       formControlName="text"
                       rows="10"
                       style="background: #fff"
                     ></textarea>
-  
+
                     <div *ngIf="form.get('text')?.touched">
                       <div
                         *ngIf="form.get('text')?.errors?.['required']"
@@ -52,7 +46,7 @@
                         characters long !
                       </div>
                     </div>
-  
+
                     <label class="form-label" for="textAreaExample"
                       >Comment</label
                     >
@@ -77,14 +71,12 @@
                   >
                     Cancel
                   </button>
-                  
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-  </form>
-    </section>
-  </div>
-  
+    </form>
+  </section>
+</div>

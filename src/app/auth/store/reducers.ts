@@ -15,7 +15,7 @@ const initialState: AuthStateInterface = {
 const authFeature = createFeature({
   name: 'auth',
   reducer: createRehydrateReducer(
-    {key: 'application_state'},
+    { key: 'application_state' },
     initialState,
     on(authActions.register, (state) => ({
       ...state,

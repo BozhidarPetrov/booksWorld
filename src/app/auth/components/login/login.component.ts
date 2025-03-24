@@ -5,7 +5,12 @@ import { LoginRequestInterface } from '../../types/loginRequest';
 import { Store } from '@ngrx/store';
 import { authActions } from '../../store/actions';
 import { combineLatest } from 'rxjs';
-import { selectIsLoading, selectIsSubmitting, selectUser, selectValidationErrors } from '../../store/reducers';
+import {
+  selectIsLoading,
+  selectIsSubmitting,
+  selectUser,
+  selectValidationErrors,
+} from '../../store/reducers';
 import { CommonModule } from '@angular/common';
 import { ErrorComponent } from '../../../shared/components/error/error.component';
 
@@ -19,12 +24,12 @@ import { ErrorComponent } from '../../../shared/components/error/error.component
 export class LoginComponent {
   constructor(private fb: FormBuilder, private store: Store) {}
 
-    data$ = combineLatest({
-      user: this.store.select(selectUser),
-      isLoading: this.store.select(selectIsLoading),
-      isSubmitting: this.store.select(selectIsSubmitting),
-      backendErrors: this.store.select(selectValidationErrors),
-    });
+  data$ = combineLatest({
+    user: this.store.select(selectUser),
+    isLoading: this.store.select(selectIsLoading),
+    isSubmitting: this.store.select(selectIsSubmitting),
+    backendErrors: this.store.select(selectValidationErrors),
+  });
 
   form = this.fb.nonNullable.group({
     email: ['', Validators.required],

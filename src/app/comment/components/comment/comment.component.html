@@ -5,85 +5,78 @@
 
   <section style="background-color: #eee">
     <form form [formGroup]="form" (ngSubmit)="onSubmit()" class="text-left">
+      <div class="container my-5 py-5">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-12 col-lg-10 col-xl-8">
+            <div class="card">
+              <div
+                class="card-footer py-3 border-0"
+                style="background-color: #f8f9fa"
+              >
+                <div class="d-flex flex-start w-100">
+                  <div data-mdb-input-init class="form-outline w-100">
+                    <textarea
+                      class="form-control"
+                      formControlName="text"
+                      rows="10"
+                      style="background: #fff"
+                    ></textarea>
 
-    <div class="container my-5 py-5">
-      <div class="row d-flex justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <div class="card">
-            <div
-              class="card-footer py-3 border-0"
-              style="background-color: #f8f9fa"
-            >
-
-              <div class="d-flex flex-start w-100">
-
-
-                
-                <div data-mdb-input-init class="form-outline w-100">
-                   
-                  <textarea
-                    class="form-control"
-                    formControlName="text"
-                    rows="10"
-                    style="background: #fff"
-                  ></textarea>
-
-                  <div *ngIf="form.get('text')?.touched">
-                    <div
-                      *ngIf="form.get('text')?.errors?.['required']"
-                      style="color: red; font-weight: bolder"
-                    >
-                      Comment text is required !
+                    <div *ngIf="form.get('text')?.touched">
+                      <div
+                        *ngIf="form.get('text')?.errors?.['required']"
+                        style="color: red; font-weight: bolder"
+                      >
+                        Comment text is required !
+                      </div>
+                      <div
+                        *ngIf="form.get('text')?.errors?.['minlength']"
+                        style="color: red; font-weight: bolder"
+                      >
+                        Comment must be at least
+                        {{form.get('text')?.errors?.['minlength']['requiredLength']}}
+                        characters long !
+                      </div>
+                      <div
+                        *ngIf="form.get('text')?.errors?.['maxlength']"
+                        style="color: red; font-weight: bolder"
+                      >
+                        Comment must be no more than
+                        {{form.get('text')?.errors?.['maxlength']['requiredLength']}}
+                        characters long !
+                      </div>
                     </div>
-                    <div
-                      *ngIf="form.get('text')?.errors?.['minlength']"
-                      style="color: red; font-weight: bolder"
+
+                    <label class="form-label" for="textAreaExample"
+                      >Comment</label
                     >
-                      Comment must be at least
-                      {{form.get('text')?.errors?.['minlength']['requiredLength']}}
-                      characters long !
-                    </div>
-                    <div
-                      *ngIf="form.get('text')?.errors?.['maxlength']"
-                      style="color: red; font-weight: bolder"
-                    >
-                      Comment must be no more than
-                      {{form.get('text')?.errors?.['maxlength']['requiredLength']}}
-                      characters long !
-                    </div>
                   </div>
-
-                  <label class="form-label" for="textAreaExample"
-                    >Comment</label
-                  >
                 </div>
-              </div>
-              <div class="float-end mt-2 pt-1">
-                <button
-                  type="button"
-                  data-mdb-button-init
-                  data-mdb-ripple-init
-                  type="submit"
-                  class="btn btn-primary btn-sm"
-                >
-                  Post comment
-                </button>
-                <button
-                  type="button"
-                  data-mdb-button-init
-                  data-mdb-ripple-init
-                  class="btn btn-outline-primary btn-sm"
-                  (click)="clearForm()"
-                >
-                  Cancel
-                </button>
-                
+                <div class="float-end mt-2 pt-1">
+                  <button
+                    type="button"
+                    data-mdb-button-init
+                    data-mdb-ripple-init
+                    type="submit"
+                    class="btn btn-primary btn-sm"
+                  >
+                    Post comment
+                  </button>
+                  <button
+                    type="button"
+                    data-mdb-button-init
+                    data-mdb-ripple-init
+                    class="btn btn-outline-primary btn-sm"
+                    (click)="clearForm()"
+                  >
+                    Cancel
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-</form>
+    </form>
   </section>
 </div>

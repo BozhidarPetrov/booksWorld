@@ -105,18 +105,12 @@ export class EditComponent implements OnInit {
 
     this.data$.subscribe({
       next: (data) => {
-
-      
-      
-
         if (data.book) {
-
-          if(data.user?._id !== data.book?.owner._id){
+          if (data.user?._id !== data.book?.owner._id) {
             this.isOwner = false;
-          }else{
+          } else {
             this.isOwner = true;
           }
-
 
           this.form.setValue({
             title: data.book.title,

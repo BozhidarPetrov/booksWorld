@@ -11,7 +11,7 @@ import { LoginRequestInterface } from './types/loginRequest';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient, ) {}
+  constructor(private http: HttpClient) {}
 
   getUser(response: RegisterResponseInterface): MongooseUserInterface {
     return response.user;

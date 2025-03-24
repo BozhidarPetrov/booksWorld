@@ -24,9 +24,8 @@ export class CreateComponent {
   constructor(private fb: FormBuilder, private store: Store) {}
 
   data$ = combineLatest({
-    validationErrors: this.store.select(selectValidationErrors)
-  }
-  )
+    validationErrors: this.store.select(selectValidationErrors),
+  });
 
   form = this.fb.nonNullable.group({
     title: [
@@ -83,4 +82,3 @@ export class CreateComponent {
     this.store.dispatch(bookAction.createBook({ request }));
   }
 }
-

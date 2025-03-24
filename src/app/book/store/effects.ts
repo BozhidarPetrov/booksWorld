@@ -165,7 +165,6 @@ export const redirectAfterEditEffect = createEffect(
     return actions$.pipe(
       ofType(bookAction.editBookSuccess),
       tap(({ book }) => {
-
         router.navigate(['/books', book._id, 'details']);
       })
     );

@@ -1,4 +1,4 @@
-<div class="navbarstyle" *ngIf="data$ | async as data" >
+<div class="navbarstyle" *ngIf="data$ | async as data">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -28,7 +28,11 @@
           </li>
 
           <li class="nav-item text-center mx-2 mx-lg-1">
-            <a class="nav-link active" aria-current="page" routerLink="/books/all">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              routerLink="/books/all"
+            >
               <div>
                 <i class="fa fa-book fa-2x"></i>
               </div>
@@ -37,7 +41,11 @@
           </li>
 
           <li class="nav-item text-center mx-2 mx-lg-1" *ngIf="data.isLoggedIn">
-            <a class="nav-link active" aria-current="page" routerLink="/books/addNew">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              routerLink="/books/addNew"
+            >
               <div>
                 <i class="fa fa-solid fa-plus fa-2x"></i>
               </div>
@@ -46,16 +54,22 @@
           </li>
 
           <li class="nav-item text-center mx-2 mx-lg-1" *ngIf="data.isLoggedIn">
-            <a class="nav-link active" aria-current="page" routerLink="/user/profile">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              routerLink="/user/profile"
+            >
               <div>
                 <i class="fa fa-solid fa-user fa-2x"></i>
               </div>
               Profile
             </a>
           </li>
-        
 
-          <li class="nav-item text-center mx-2 mx-lg-1" *ngIf="!data.isLoggedIn">
+          <li
+            class="nav-item text-center mx-2 mx-lg-1"
+            *ngIf="!data.isLoggedIn"
+          >
             <a
               class="nav-link active"
               aria-current="page"
@@ -68,7 +82,10 @@
             </a>
           </li>
 
-          <li class="nav-item text-center mx-2 mx-lg-1" *ngIf="!data.isLoggedIn">
+          <li
+            class="nav-item text-center mx-2 mx-lg-1"
+            *ngIf="!data.isLoggedIn"
+          >
             <a
               class="nav-link active"
               aria-current="page"
@@ -81,19 +98,22 @@
             </a>
           </li>
 
-          <li class="nav-item text-center mx-2 mx-lg-1" style="cursor: pointer;" *ngIf="data.isLoggedIn">
+          <li
+            class="nav-item text-center mx-2 mx-lg-1"
+            style="cursor: pointer"
+            *ngIf="data.isLoggedIn"
+          >
             <a
               class="nav-link active"
               aria-current="page"
               (click)="openDialogLogout('300ms', '300ms')"
-              >
+            >
               <div>
                 <i class="fa fa-sign-out fa-2x"></i>
               </div>
               Logout
             </a>
           </li>
-
         </ul>
 
         <!-- Search form -->

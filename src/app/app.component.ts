@@ -15,7 +15,6 @@ import { AuthService } from './auth/auth-service.service';
 import { combineLatest } from 'rxjs';
 import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 
-
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -25,7 +24,7 @@ import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
     FooterComponent,
     LogoComponent,
     NavbarComponent,
-    ModalModule
+    ModalModule,
   ],
   providers: [BsModalService],
   templateUrl: './app.component.html',

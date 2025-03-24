@@ -1,9 +1,8 @@
 .navbarstyle {
-    margin-left: -5px;
-    margin-right: -5px;
-    margin-bottom: -20px;
+  margin-left: -5px;
+  margin-right: -5px;
+  margin-bottom: -20px;
 }
 .btn {
-    padding: .55rem 1.5rem .45rem;
-  } 
- 
+  padding: 0.55rem 1.5rem 0.45rem;
+}

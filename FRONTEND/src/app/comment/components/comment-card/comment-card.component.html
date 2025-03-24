@@ -2,7 +2,7 @@
   <div class="card-body">
     <div class="d-flex flex-start align-items-center">
       <div>
-        <h6 class="fw-bold text-primary mb-1">{{ comment?.username }}</h6>
+        <h6 class="fw-bold text-primary mb-1" style="font-weight: bolder; font-size:large;">{{ comment?.username }}</h6>
         <h6 class="fw-bold text-primary mb-1">{{ commentDate }}</h6>
       </div>
     </div>
@@ -11,7 +11,7 @@
       {{ comment?.text }}
     </p>
 
-    <p class="mt-3 mb-4 pb-2">Likes: {{ likesCounter }}</p>
+    <p class="mt-3 mb-4 pb-2" style="font-weight: bolder; font-size: large;" >Likes: {{ likesCounter }}</p>
 
     <div *ngIf="likedFrom.length !== 0">
       <p *ngIf="hasLiked" class="mt-3 mb-4 pb-2">Liked by: {{ likedFrom }}</p>

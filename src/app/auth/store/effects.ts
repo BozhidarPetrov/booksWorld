@@ -100,7 +100,7 @@ export const logoutEffect = createEffect(
       ofType(authActions.logout),
       tap(() => {
         persistenceService.set('accessToken', '');
-        router.navigateByUrl('/');
+        router.navigateByUrl('/user/login');
       })
     );
   },

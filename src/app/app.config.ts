@@ -2,7 +2,6 @@ import { ApplicationConfig, isDevMode } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { provideClientHydration } from '@angular/platform-browser';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideState, provideStore } from '@ngrx/store';
 import { provideRouterStore, routerReducer } from '@ngrx/router-store';
@@ -17,6 +16,7 @@ import { AuthService } from './auth/auth-service.service';
 import { authInterceptor } from './shared/services/auth.interceptor';
 import { bookFeatureKey, bookReducer } from './book/store/reducers';
 import { commentFeatureKey, commentReducer } from './comment/store/reducers';
+import { provideClientHydration } from '@angular/platform-browser';
 
 export const appConfig: ApplicationConfig = {
   providers: [

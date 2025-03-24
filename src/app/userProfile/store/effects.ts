@@ -22,6 +22,8 @@ export const editProfileEffect = createEffect(
             return profileActions.editProfileSuccess({ currentUser });
           }),
           catchError((error: HttpErrorResponse) => {
+            console.log(error);
+            
             return of(
               profileActions.editProfileFailure({
                 error: error.error.message,
@@ -41,7 +43,6 @@ export const redirectAftereditProfileEffect = createEffect(
       ofType(profileActions.editProfileSuccess),
       tap(() => {
         store.dispatch(authActions.logout());
-        // router.navigateByUrl('/user/profile');
       })
     );
   },

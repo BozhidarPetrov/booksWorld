@@ -37,7 +37,7 @@ export class CommentCardComponent implements OnInit {
     user: this.store.select(selectUser),
   });
 
-username: String | undefined = '';
+  username: String | undefined = '';
   userId: String | undefined = '';
   isLoggedIn: boolean = false;
   hasLiked: boolean = false;
@@ -84,8 +84,8 @@ username: String | undefined = '';
       })
     );
     this.hasLiked = true;
-    if(this.username){
-      this.likedFrom.push(this.username)
+    if (this.username) {
+      this.likedFrom.push(this.username);
     }
 
     if (this.likesCounter !== undefined) {

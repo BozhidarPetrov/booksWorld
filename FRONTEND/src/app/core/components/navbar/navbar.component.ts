@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { authActions } from '../../../auth/store/actions';
-import { HttpClient } from '@angular/common/http';
 import { combineLatest } from 'rxjs';
 import {
   selectIsLoading,
@@ -46,7 +44,7 @@ export class NavbarComponent {
   constructor(
     private fb: FormBuilder,
     private store: Store,
-    private http: HttpClient
+    private router: Router
   ) {}
 
   form = this.fb.nonNullable.group({
@@ -54,7 +52,8 @@ export class NavbarComponent {
   });
 
   onSubmit(): void {
-    console.log(this.form.getRawValue());
+    const searchText = this.form.getRawValue();
+    this.router.navigate(['/books', 'searchResults'], {queryParams: searchText})
   }
 
   openDialogLogout(

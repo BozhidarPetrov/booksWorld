@@ -116,16 +116,14 @@
           </li>
         </ul>
 
-        <!-- Search form -->
         <form
           [formGroup]="form"
-          (ngSubmit)="onSubmit()"
           class="d-flex input-group w-auto ms-lg-3 my-3 my-lg-0"
         >
           <input
             type="search"
             class="form-control"
-            placeholder="Enter your search word here..."
+            placeholder="Enter your book title here..."
             aria-label="Search"
             style="
               margin-top: 20px;
@@ -137,6 +135,7 @@
             formControlName="searchText"
           />
           <button
+          (click)="onSubmit()"
             class="btn btn-primary fa fa-search fa-lg"
             type="button"
             data-mdb-ripple-color="dark"

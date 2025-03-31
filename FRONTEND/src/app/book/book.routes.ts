@@ -5,6 +5,7 @@ import { DetailsComponent } from './components/details/details.component';
 import { EditComponent } from './components/edit/edit.component';
 import { GuestGuard } from '../shared/guards/guestGuard';
 import { CommentComponent } from '../comment/components/comment/comment.component';
+import { SearchResultsComponent } from './components/search-results/search-results.component';
 
 export const createBookRoutes: Route[] = [
   {
@@ -41,5 +42,12 @@ export const bookCommentRoutes: Route[] = [
     path: '',
     component: CommentComponent,
     canActivate: [GuestGuard],
+  },
+];
+
+export const searchResultsRoutes: Route[] = [
+  {
+    path: '',
+    component: SearchResultsComponent,
   },
 ];

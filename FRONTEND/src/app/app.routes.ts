@@ -55,6 +55,12 @@ export const routes: Routes = [
   },
 
   {
+    path: 'books/searchResults',
+    loadChildren: () =>
+      import('../app/book/book.routes').then((m) => m.searchResultsRoutes),
+  },
+
+  {
     path: 'user/profile',
     loadChildren: () =>
       import('../app/userProfile/profile.routes').then((m) => m.profileRoutes),

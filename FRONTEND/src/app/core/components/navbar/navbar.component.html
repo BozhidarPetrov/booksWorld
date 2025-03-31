@@ -40,6 +40,22 @@
             </a>
           </li>
 
+          <li
+            class="nav-item text-center mx-2 mx-lg-1"
+            *ngIf="!data.isLoggedIn"
+          >
+            <a
+              class="nav-link active"
+              aria-current="page"
+              routerLink="/books/search"
+            >
+              <div>
+                <i class="fa fa-search fa-2x"></i>
+              </div>
+              Search
+            </a>
+          </li>
+
           <li class="nav-item text-center mx-2 mx-lg-1" *ngIf="data.isLoggedIn">
             <a
               class="nav-link active"
@@ -115,33 +131,6 @@
             </a>
           </li>
         </ul>
-
-        <form
-          [formGroup]="form"
-          class="d-flex input-group w-auto ms-lg-3 my-3 my-lg-0"
-        >
-          <input
-            type="search"
-            class="form-control"
-            placeholder="Enter your book title here..."
-            aria-label="Search"
-            style="
-              margin-top: 20px;
-              margin-left: 10px;
-              font-family: 'Courier New', Courier, monospace;
-              font-size: large;
-              font-weight: bolder;
-            "
-            formControlName="searchText"
-          />
-          <button
-          (click)="onSubmit()"
-            class="btn btn-primary fa fa-search fa-lg"
-            type="button"
-            data-mdb-ripple-color="dark"
-            style="margin-left: 10px; margin-top: 15px; margin-right: -20px"
-          ></button>
-        </form>
       </div>
     </div>
   </nav>

@@ -1,14 +1,44 @@
 <div class="searchResult">
+  <form
+    [formGroup]="form"
+    class="d-flex input-group w-auto ms-lg-3 my-3 my-lg-0"
+  >
+    <input
+      type="search"
+      class="form-control"
+      placeholder="Enter your book title here..."
+      aria-label="Search"
+      style="
+        margin-top: 20px;
+        margin-left: 10px;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: large;
+        font-weight: bolder;
+      "
+      formControlName="searchText"
+    />
+    <button
+      (click)="search()"
+      class="btn btn-primary fa fa-search fa-lg"
+      type="button"
+      data-mdb-ripple-color="dark"
+      style="margin-left: 10px; margin-top: 15px; margin-right: -20px"
+    ></button>
+  </form>
 
-    <div *ngIf="filteredBooks.length > 0" >
-        <h1  style="
+  <div *ngIf="filteredBooks.length > 0">
+    <h1
+      style="
         color: rgb(0, 255, 72);
         font-weight: bolder;
         font-family: 'Courier New', Courier, monospace;
-        ">Search results for "{{searchText}}":</h1>
-    </div>
+      "
+    >
+      Search results for "{{ searchText }}":
+    </h1>
+  </div>
 
-<div *ngIf="filteredBooks">
+  <div *ngIf="filteredBooks">
     <div class="container">
       <div class="card-columns">
         <div *ngFor="let book of filteredBooks" class="filteredBooks">
@@ -19,12 +49,16 @@
   </div>
 
   <div *ngIf="filteredBooks.length === 0">
-    <h1  style="
-color: rgb(0, 255, 72);
-font-weight: bolder;
-font-family: 'Courier New', Courier, monospace;
-">No matches for "{{searchText}}"! Try with another key word...</h1>
+    <div *ngIf="hasSearched">
+      <h1
+        style="
+          color: rgb(0, 255, 72);
+          font-weight: bolder;
+          font-family: 'Courier New', Courier, monospace;
+        "
+      >
+        No matches for "{{ searchText }}"! Try with another key word...
+      </h1>
+    </div>
   </div>
-
 </div>
-

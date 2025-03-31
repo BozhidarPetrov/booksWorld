@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { combineLatest } from 'rxjs';
 import {
@@ -41,20 +41,7 @@ export class NavbarComponent {
     isLoggedIn: this.store.select(selectIsLoggedIn),
   });
 
-  constructor(
-    private fb: FormBuilder,
-    private store: Store,
-    private router: Router
-  ) {}
-
-  form = this.fb.nonNullable.group({
-    searchText: '',
-  });
-
-  onSubmit(): void {
-    const searchText = this.form.getRawValue();
-    this.router.navigate(['/books', 'searchResults'], {queryParams: searchText})
-  }
+  constructor(private store: Store) {}
 
   openDialogLogout(
     enterAnimationDuration: string,

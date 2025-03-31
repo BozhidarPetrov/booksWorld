@@ -122,13 +122,10 @@ export class DetailsComponent implements OnInit {
 
         this.likesCounter = data.book?.likes.length;
         if (this.userId) {
-          // const likesArr: string[] | undefined = data?.book?.likes;
           const likesArr: MongooseUserInterface[] | undefined =
             data?.book?.likes;
 
-          // if (likesArr?.includes(this.userId.toString())) {
-          //   this.hasLiked = true;
-          // }
+       
 
           if (likesArr) {
             for (let user of likesArr) {

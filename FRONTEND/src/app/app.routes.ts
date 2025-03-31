@@ -55,7 +55,7 @@ export const routes: Routes = [
   },
 
   {
-    path: 'books/searchResults',
+    path: 'books/search',
     loadChildren: () =>
       import('../app/book/book.routes').then((m) => m.searchResultsRoutes),
   },

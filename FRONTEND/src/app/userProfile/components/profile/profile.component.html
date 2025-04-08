@@ -1,8 +1,12 @@
 <div class="profile" *ngIf="data$ | async as data">
+  <div class="textbackground" style="font-size: xx-large;">
+    {{data.user?.username}}'s profile :
+      </div>
   <section
     class="w-100 px-4 py-5"
     style="background-color: #9de2ff; border-radius: 0.5rem 0.5rem 0 0"
   >
+
     <div class="row d-flex justify-content-center">
       <div class="col col-md-9 col-lg-7 col-xl-6">
         <div class="card" style="border-radius: 15px">

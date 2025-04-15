@@ -39,7 +39,7 @@ export class AllBooksComponent implements OnInit {
 
       this.booksOfGivenPage = this.allBooks.slice(
         this.startIndex,
-        this.endIndex
+        this.endIndex+1
       );
     }
   }

@@ -1,16 +1,26 @@
 <div class="allBooks">
-  <div >
+  <div>
     <div class="text-center">
-      <p style="font-size: 500%" class="textbackground">
-        ALL BOOKS
-      </p>
+      <p style="font-size: 500%" class="textbackground">ALL BOOKS</p>
       <div>
-        <div class="card-columns container" *ngIf="allBooks">
-          <div *ngFor="let book of allBooks" class="item">
+        <!-- <div class="card-columns container" *ngIf="allBooks"> -->
+          <div class="card-columns container" *ngIf="booksOfGivenPage">
+          <!-- <div *ngFor="let book of allBooks"> -->
+            <div *ngFor="let book of booksOfGivenPage">
             <app-book-card [book]="book" />
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <mat-paginator
+    [length]="allBooks.length"
+    [pageSize]="4"
+    [showFirstLastButtons]="true"
+    [pageIndex]="currentPage"
+    (page)="handlePageEvent($event)"
+    aria-label="Select page"
+  >
+  </mat-paginator>
 </div>

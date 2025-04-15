@@ -1,12 +1,12 @@
 <div class="allBooks">
-  <div class="container">
+  <div >
     <div class="text-center">
       <p style="font-size: 500%" class="textbackground">
         ALL BOOKS
       </p>
-      <div class="container">
-        <div class="card-columns" *ngIf="allBooks">
-          <div *ngFor="let book of allBooks">
+      <div>
+        <div class="card-columns container" *ngIf="allBooks">
+          <div *ngFor="let book of allBooks" class="item">
             <app-book-card [book]="book" />
           </div>
         </div>

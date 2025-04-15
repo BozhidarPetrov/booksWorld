@@ -1,8 +1,8 @@
 .allBooks {
+  display: flex;
   position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -85%);
+  left: 200px;
+  top: 250px;
 }
 
 body {
@@ -28,4 +28,23 @@ h1 {
   .text-muted i {
     margin: 0 10px;
   }
+}
+
+.container {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 400px 400px 400px;
+  grid-auto-columns: 400px;
+  /* grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-columns: 1fr; */
+  grid-auto-rows: 100px;
+  border: 1px solid #c1c1c1;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.container > div {
+  grid-row: 1; /* keeps all items on the first row */
+  border: 1px solid #010101;
+  border-radius: 5px;
 }

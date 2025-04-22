@@ -32,14 +32,14 @@ export class AllBooksComponent implements OnInit {
 
   fillBooksOfGivenPageArr() {
     if (this.currentPage === 0) {
-      this.booksOfGivenPage = this.allBooks.slice(0, 4);
+      this.booksOfGivenPage = this.allBooks.slice(0, 4); //This logic is based on a grid with 1 row and 4 cells on it, showing 1-4 items per page
     } else {
-      this.startIndex = this.currentPage * 4;
-      this.endIndex = (this.currentPage + 1) * 4 - 1;
+      this.startIndex = this.currentPage * 4; //This logic is based on up to 4 items per page, in this particular case this will be a fixed number, due to styling reasons
+      this.endIndex = (this.currentPage + 1) * 4 - 1; //This logic is based on up to 4 items per page, in this particular case this will be a fixed number, due to styling reasons
 
       this.booksOfGivenPage = this.allBooks.slice(
         this.startIndex,
-        this.endIndex+1
+        this.endIndex + 1
       );
     }
   }

@@ -3,10 +3,8 @@
     <div class="text-center">
       <p style="font-size: 500%" class="textbackground">ALL BOOKS</p>
       <div>
-        <!-- <div class="card-columns container" *ngIf="allBooks"> -->
-          <div class="card-columns container" *ngIf="booksOfGivenPage">
-          <!-- <div *ngFor="let book of allBooks"> -->
-            <div *ngFor="let book of booksOfGivenPage">
+        <div class="card-columns container" *ngIf="booksOfGivenPage">
+          <div *ngFor="let book of booksOfGivenPage">
             <app-book-card [book]="book" />
           </div>
         </div>
@@ -21,6 +19,7 @@
     [pageIndex]="currentPage"
     (page)="handlePageEvent($event)"
     aria-label="Select page"
+    style="border-radius: 25px; height: 50px; background: rgba(0, 247, 82, 0.5);  color: rgb(0, 0, 0);  font-weight: bolder; font-family: 'Courier New', Courier, monospace; font-size: larger;"
   >
   </mat-paginator>
 </div>

@@ -1,11 +1,4 @@
-@use '@angular/material' as mat;
 
-:root {
-  @include mat.paginator-overrides((
-    container-text-color: orange,
-    container-background-color: red,
-  ));
-}
 
 .allBooks {
   display: flex;
@@ -56,14 +49,3 @@ h1 {
   border-radius: 5px;
 }
 
-.mat-mdc-paginator-icon {
-  fill: yellow !important;
-  color: yellow !important;
-}
-
-:root {
-  @include mat.paginator-overrides((
-    container-text-color: orange,
-    container-background-color: red,
-  ));
-}

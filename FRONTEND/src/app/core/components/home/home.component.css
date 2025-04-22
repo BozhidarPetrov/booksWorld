@@ -1,6 +1,6 @@
 .home {
   position: absolute;
-  top: 75%;
+  top: 80%;
   left: 50%;
   transform: translate(-50%, -85%);
   width: 20%;
@@ -8,7 +8,7 @@
 
 .home1 {
   position: absolute;
-  top: 20%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -85%);
 }

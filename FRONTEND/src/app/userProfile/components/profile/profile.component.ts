@@ -8,7 +8,6 @@ import { BookCardSmallComponent } from '../../../book/components/book-card-small
 import { BookFromMongoose } from '../../../book/types/bookFromMongoose';
 import { RouterLink } from '@angular/router';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -59,6 +58,7 @@ export class ProfileComponent implements OnInit {
   });
 
   myBooks(): void {
+    this.currentPage = 0;
     this.filteredBooks = this.allBooks.filter(
       (book) => book.owner._id === this.userId
     );
@@ -67,6 +67,8 @@ export class ProfileComponent implements OnInit {
   }
 
   favoriteBooks(): void {
+
+    this.currentPage = 0;
     
     const id = this.userId?.toString();
 

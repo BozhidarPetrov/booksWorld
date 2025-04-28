@@ -41,10 +41,31 @@ class="textbackground"
     </h1>
   </div>
 
-  <div *ngIf="filteredBooks">
+  <div *ngIf="filteredBooksPerPage.length > 0">
+    <mat-paginator
+    [length]="filteredBooks.length"
+    [pageSize]="4"
+    [showFirstLastButtons]="true"
+    [pageIndex]="currentPage"
+    (page)="handlePageEvent($event)"
+    aria-label="Select page"
+    style="
+      border-radius: 25px;
+      height: 50px;
+      background: rgba(0, 247, 82, 0.5);
+      color: rgb(0, 0, 0);
+      font-weight: bolder;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: larger;
+    "
+  >
+  </mat-paginator>
+  </div>
+
+  <div *ngIf="filteredBooksPerPage">
     <div class="container">
       <div class="card-columns">
-        <div *ngFor="let book of filteredBooks" class="filteredBooks">
+        <div *ngFor="let book of filteredBooksPerPage" class="filteredBooks">
           <app-book-card-small [book]="book" />
         </div>
       </div>

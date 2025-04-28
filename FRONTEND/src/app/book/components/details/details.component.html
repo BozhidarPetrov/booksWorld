@@ -1,5 +1,5 @@
 <div class="details" *ngIf="data$ | async as data">
-  <div class="container py-3">
+  <div class=" py-3">
     <div class="card">
       <div class="row">
         <div class="col-md-7 px-3">
@@ -102,7 +102,19 @@
     </div>
   </div>
 
-  <div *ngIf="data.book?.comments?.length === 0">
+  <!-- <div *ngIf="data.book?.comments?.length === 0">
+    <h1
+      style="
+        color: rgb(0, 255, 72);
+        font-weight: bolder;
+        font-family: 'Courier New', Courier, monospace;
+      "
+    >
+      No comments have been added yet!
+    </h1>
+  </div> -->
+
+  <div *ngIf="commentsArr.length === 0">
     <h1
       style="
         color: rgb(0, 255, 72);
@@ -114,11 +126,39 @@
     </h1>
   </div>
 
-  <div *ngIf="data.book?.comments">
+  <!-- <div *ngIf="data.book?.comments">
     <div *ngFor="let comment of data.book?.comments">
       <app-comment-card [comment]="comment" />
     </div>
+  </div> -->
+
+  <div *ngIf="commentsArr.length > 0">
+
+    <mat-paginator
+    [length]="commentsArr.length"
+    [pageSize]="1"
+    [showFirstLastButtons]="true"
+    [pageIndex]="currentPage"
+    (page)="handlePageEvent($event)"
+    aria-label="Select page"
+    style="
+      border-radius: 25px;
+      height: 50px;
+      background: rgba(0, 247, 82, 0.5);
+      color: rgb(0, 0, 0);
+      font-weight: bolder;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: larger;
+    "
+  >
+  </mat-paginator>
+
+  <div class="container">
+    <div *ngFor="let comment of commentsPaginated">
+      <app-comment-card [comment]="comment" />
+    </div>
   </div>
+</div>
 
   <br />
   <br />

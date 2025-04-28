@@ -19,10 +19,18 @@ import {
 import { ConformationDialogComponent } from '../../../shared/components/conformation-dialog/conformation-dialog';
 import { CommentCardComponent } from '../../../comment/components/comment-card/comment-card.component';
 import { MongooseUserInterface } from '../../../shared/types/mongooseUser';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { CommentInterface } from '../../../comment/types/commentInterface';
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [RouterLink, CommonModule, MatButtonModule, CommentCardComponent],
+  imports: [
+    RouterLink,
+    CommonModule,
+    MatButtonModule,
+    CommentCardComponent,
+    MatPaginatorModule,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './details.component.html',
   styleUrl: './details.component.css',
@@ -38,6 +46,27 @@ export class DetailsComponent implements OnInit {
   bookId: string | null = '';
   likesCounter: number | undefined = 0;
   likedFrom: String[] = [];
+
+  commentsArr: CommentInterface[] = [];
+  commentsPaginated: CommentInterface[] = [];
+
+  currentPage = 0;
+  handlePageEvent(pageEvent: PageEvent) {
+    console.log('handlePageEvent', pageEvent);
+    this.currentPage = pageEvent.pageIndex;
+    this.fillCommentsPaginatedArr();
+  }
+
+  fillCommentsPaginatedArr() {
+    if (this.currentPage === 0) {
+      this.commentsPaginated = this.commentsArr.slice(0, 1); //This logic is based on a grid with 1 row and 1 cell on it, showing 1 item per page
+    } else {
+      this.commentsPaginated = this.commentsArr.slice(
+        this.currentPage,
+        this.currentPage + 1
+      );
+    }
+  }
 
   readonly dialog = inject(MatDialog);
 
@@ -112,6 +141,11 @@ export class DetailsComponent implements OnInit {
         this.userId = data?.user?._id;
         this.username = data?.user?.username;
 
+        if (data.book?.comments) {
+          this.commentsArr = data.book?.comments;
+          this.fillCommentsPaginatedArr();
+        }
+
         this.likedFrom = [];
         if (data.book?.likes) {
           for (let like of data.book?.likes) {
@@ -124,8 +158,6 @@ export class DetailsComponent implements OnInit {
         if (this.userId) {
           const likesArr: MongooseUserInterface[] | undefined =
             data?.book?.likes;
-
-       
 
           if (likesArr) {
             for (let user of likesArr) {

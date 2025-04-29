@@ -1,4 +1,4 @@
-<div class="details" *ngIf="data$ | async as data">
+<div [ngClass]="hasComments ? 'detailsWithComments' : 'detailsNoComments'" *ngIf="data$ | async as data">
   <div class=" py-3">
     <div class="card">
       <div class="row">

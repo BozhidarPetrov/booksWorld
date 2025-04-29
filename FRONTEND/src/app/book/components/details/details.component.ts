@@ -46,6 +46,7 @@ export class DetailsComponent implements OnInit {
   bookId: string | null = '';
   likesCounter: number | undefined = 0;
   likedFrom: String[] = [];
+  hasComments: boolean = false;
 
   commentsArr: CommentInterface[] = [];
   commentsPaginated: CommentInterface[] = [];
@@ -142,6 +143,9 @@ export class DetailsComponent implements OnInit {
         this.username = data?.user?.username;
 
         if (data.book?.comments) {
+          if (data.book.comments.length > 0) {
+            this.hasComments = true;
+          }
           this.commentsArr = data.book?.comments;
           this.fillCommentsPaginatedArr();
         }
